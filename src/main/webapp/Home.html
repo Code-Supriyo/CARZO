@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>VAHAN - Home</title>
+</head>
+
+<body>
+
+    <h1>Online Car Purchase and Comparing System</h1>
+
+    <h2>Welcome <span id="username"></span></h2>
+
+    <hr>
+
+    <h3>Explore Our Services</h3>
+
+    <a href="CarCategories.html">Car Categories</a>
+    <br><br>
+
+    <a href="CarComparison.html">Compare Cars</a>
+    <br><br>
+
+    <a href="CarMaintenance.html">Car Maintenance</a>
+    <br><br>
+
+    <hr>
+
+    <h3>User Services</h3>
+
+    <a href="Profile">My Profile</a>
+    <br><br>
+
+    <a href="ChangePassword.html">Change Password</a>
+    <br><br>
+
+    <a href="Wishlist.html">My Wishlist</a>
+    <br><br>
+
+    <a href="PurchaseHistory.html">Purchase History</a>
+    <br><br>
+
+    <a href="Logout">Logout</a>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+
+        if (name) {
+            document.getElementById("username").textContent = name;
+        }
+    </script>
+
+</body>
+</html>

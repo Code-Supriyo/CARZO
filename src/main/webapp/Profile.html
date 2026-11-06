@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>VAHAN - My Profile</title>
+</head>
+
+<body>
+
+    <h1>VAHAN - My Profile</h1>
+
+    <h2>Welcome <span id="username"></span></h2>
+
+    <hr>
+
+    <h3>Personal Information</h3>
+
+    <p>
+        <b>Name:</b>
+        <span id="name"></span>
+    </p>
+
+    <p>
+        <b>Email ID:</b>
+        <span id="email"></span>
+    </p>
+
+    <p>
+        <b>Contact No:</b>
+        <span id="contact"></span>
+    </p>
+
+    <p>
+        <b>Address:</b>
+        <span id="address"></span>
+    </p>
+
+    <p>
+        <b>Do you have any car?</b>
+        <span id="carStatus"></span>
+    </p>
+
+    <p>
+        <b>Car Name / Model:</b>
+        <span id="carName"></span>
+    </p>
+
+    <hr>
+
+    <h3>Account Options</h3>
+
+    <a href="EditProfile.html">Edit Profile</a>
+    <br><br>
+
+    <a href="ChangePassword.html">Change Password</a>
+    <br><br>
+
+    <a href="Home">Back to Home</a>
+    <br><br>
+
+    <a href="Logout">Logout</a>
+    
+    <!-- JavaScript starts here -->
+	<script>
+
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById("username").textContent =
+            params.get("name") || "";
+
+        document.getElementById("name").textContent =
+            params.get("name") || "";
+
+        document.getElementById("email").textContent =
+            params.get("email") || "";
+
+        document.getElementById("contact").textContent =
+            params.get("contact") || "";
+
+        document.getElementById("address").textContent =
+            params.get("address") || "";
+
+        document.getElementById("carStatus").textContent =
+            params.get("carStatus") || "";
+
+        document.getElementById("carName").textContent =
+            params.get("carName") || "";
+
+    </script>
+    
+</body>
+
+</html>

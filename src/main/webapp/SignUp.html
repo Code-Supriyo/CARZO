@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <title>VAHAN – Where Elegance Meets the Road</title>
+</head>
+
+<body>
+
+    <form method="post" action="SignUp">
+    	
+		<h1>Online Car Purchase and Comparing System</h1>
+		<h2>Create Your Account</h2>
+
+        Name :
+        <input type="text" name="n1" required>
+        <br><br>
+
+        Email ID :
+        <input type="email" name="n2" required>
+        <br><br>
+
+        Contact No :
+        <input type="text" name="n3" required>
+        <br><br>
+
+        Address :
+        <textarea name="n4" rows="4" cols="30" required  style="vertical-align: top;"></textarea>
+        <br><br>
+
+        Password :
+        <input type="password" name="n5" id="password" required>
+        <br><br>
+
+        Confirm Password :
+        <input type="password" name="n6" id="confirmPassword" required>
+        <br><br>
+
+        Security Question :
+        <select name="n7" required>
+            <option value="">Select</option>
+            <option value="dream_car">Dream Car</option>
+            <option value="favorite_color">Favorite Color</option>
+        </select>
+        <br><br>
+
+        Answer :
+        <input type="text" name="n8" required>
+        <br><br>
+
+        Do you have any car?
+        <select name="n9" id="carStatus" onchange="showCarDetails()" required>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <br><br>
+
+        <div id="carDetails" style="display:none;">
+            Car Name / Model :
+            <input type="text" name="n10">
+            <br><br>
+        </div>
+
+        <input type="checkbox" name="terms" required>
+        I agree to the Terms and Conditions
+        <br><br>
+
+        <input type="submit" value="Register">
+        <input type="reset" value="Reset">
+
+        <br><br>
+
+        Already have an account?
+        <a href="Login.html">Login here</a>
+
+    </form>
+
+
+    <script>
+        function showCarDetails() {
+
+            var carStatus = document.getElementById("carStatus").value;
+            var carDetails = document.getElementById("carDetails");
+
+            if (carStatus == "Yes") {
+                carDetails.style.display = "block";
+            }
+            else {
+                carDetails.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
