@@ -1,47 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile - CARZO</title>
+    <link rel="stylesheet" href="css/carzo.css">
+</head>
 
-<form action="EditProfile" method="post">
+<body>
 
-    <label>Full Name:</label><br>
-    <input type="text" name="name"
-           placeholder="Enter new name">
-    <br><br>
+    <h2>Edit Profile</h2>
 
-    <label>Contact Number:</label><br>
-    <input type="text" name="contact"
-           placeholder="Enter new contact number">
-    <br><br>
+    <form action="EditProfile" method="post">
 
-    <label>Address:</label><br>
-    <textarea name="address"
-              placeholder="Enter new address"></textarea>
-    <br><br>
+        <label>Full Name:</label><br>
+        <input type="text" name="name"
+               placeholder="Enter new name">
+        <br><br>
 
-    <label>Security Question:</label><br>
-    <select name="question">
-        <option value="">Keep Previous Question</option>
-        <option value="Dream Car">What is your dream car?</option>
-        <option value="Favorite Color">What is your favorite color?</option>
-    </select>
-    <br><br>
+        <label>Contact Number:</label><br>
+        <input type="text" name="contact"
+               placeholder="Enter new contact number">
+        <br><br>
 
-    <label>Security Answer:</label><br>
-    <input type="text" name="answer"
-           placeholder="Enter new answer">
-    <br><br>
+        <label>Address:</label><br>
+        <textarea name="address"
+                  placeholder="Enter new address"></textarea>
+        <br><br>
 
-    <label>Do you have any car?</label><br>
-    <select name="carStatus">
-        <option value="">Keep Previous Status</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-    </select>
-    <br><br>
+        <label>Security Question:</label><br>
+        <select name="question">
+            <option value="">Keep Previous Question</option>
+            <option value="Dream Car">What is your dream car?</option>
+            <option value="Favorite Color">What is your favorite color?</option>
+        </select>
+        <br><br>
 
-    <label>Car Name / Model:</label><br>
-    <input type="text" name="carName"
-           placeholder="Enter new car name">
-    <br><br>
+        <label>Security Answer:</label><br>
+        <input type="text" name="answer"
+               placeholder="Enter new answer">
+        <br><br>
 
-    <button type="submit">Update Profile</button>
+        <label>Do you have any car?</label><br>
+        <select name="carStatus">
+            <option value="">Keep Previous Status</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <br><br>
 
-</form>
+        <label>Car Name / Model:</label><br>
+        <input type="text" name="carName"
+               placeholder="Enter new car name">
+        <br><br>
+
+        <button type="submit">Update Profile</button>
+
+    </form>
+
+    <p><a href="Profile">Back to Profile</a></p>
+    <script>
+	function togglePassword(id, button) {
+	    const password = document.getElementById(id);
+
+    	if (password.type === "password") {
+        	password.type = "text";
+        	button.textContent = "🙈";
+    	} else {
+        	password.type = "password";
+        	button.textContent = "👁";
+    	}
+   }
+   </script>
+
+</body>
+</html>
