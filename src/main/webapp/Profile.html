@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -9,61 +10,82 @@
 
 <body>
 
-    <h1>VAHAN - My Profile</h1>
+    <div class="profile-container">
 
-    <h2>Welcome <span id="username"></span></h2>
+        <h1>VAHAN - My Profile</h1>
 
-    <hr>
+        <h2 class="profile-welcome">
+            Welcome <span id="username"></span>
+        </h2>
 
-    <h3>Personal Information</h3>
+        <hr>
 
-    <p>
-        <b>Name:</b>
-        <span id="name"></span>
-    </p>
+        <!-- Personal Information -->
+        <section class="personal-info">
 
-    <p>
-        <b>Email ID:</b>
-        <span id="email"></span>
-    </p>
+            <h3>Personal Information</h3>
 
-    <p>
-        <b>Contact No:</b>
-        <span id="contact"></span>
-    </p>
+            <div class="profile-details">
 
-    <p>
-        <b>Address:</b>
-        <span id="address"></span>
-    </p>
+                <p>
+                    <b>Name:</b>
+                    <span id="name"></span>
+                </p>
 
-    <p>
-        <b>Do you have any car?</b>
-        <span id="carStatus"></span>
-    </p>
+                <p>
+                    <b>Email ID:</b>
+                    <span id="email"></span>
+                </p>
 
-    <p>
-        <b>Car Name / Model:</b>
-        <span id="carName"></span>
-    </p>
+                <p>
+                    <b>Contact No:</b>
+                    <span id="contact"></span>
+                </p>
 
-    <hr>
+                <p>
+                    <b>Address:</b>
+                    <span id="address"></span>
+                </p>
 
-    <h3>Account Options</h3>
+                <p>
+                    <b>Do you have any car?</b>
+                    <span id="carStatus"></span>
+                </p>
 
-    <a href="EditProfile.html">Edit Profile</a>
-    <br><br>
+                <p>
+                    <b>Car Name / Model:</b>
+                    <span id="carName"></span>
+                </p>
 
-    <a href="ChangePassword.html">Change Password</a>
-    <br><br>
+            </div>
 
-    <a href="Home">Back to Home</a>
-    <br><br>
+        </section>
 
-    <a href="Logout">Logout</a>
-    
-    <!-- JavaScript starts here -->
-	<script>
+        <hr>
+
+        <!-- Account Options -->
+        <section class="account-options">
+
+            <h3>Account Options</h3>
+
+            <div class="option-buttons">
+
+                <a href="EditProfile.html">Edit Profile</a>
+
+                <a href="ChangePassword.html">Change Password</a>
+
+                <a href="Home">Back to Home</a>
+
+                <a href="Logout">Logout</a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Existing JavaScript - unchanged -->
+    <script>
 
         const params = new URLSearchParams(window.location.search);
 
@@ -89,7 +111,6 @@
             params.get("carName") || "";
 
     </script>
-    
-</body>
 
+</body>
 </html>
