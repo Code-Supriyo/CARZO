@@ -110,21 +110,54 @@ public class SignUp extends HttpServlet {
 	       
 	        String q1 = "insert into car1 values(CAR1_SEQ.NEXTVAL,'" +nm1+ "','" +nm2+ "','" +nm3+ "','" +nm4+ "','" +nm5+ "','" +nm7+ "','" +nm8+ "','" +nm9+ "','" +nm10+ "')";			
 			int x = stmt.executeUpdate(q1);
-			if(x > 0) {
-				pw1.println("<html><body>");
-                pw1.println("<h2>Registration Successful!</h2>");
-                pw1.println("<p>Your account has been created successfully.</p>");
-                pw1.println("<a href='Login.html'>Go to Login Page</a>");
-                pw1.println("</body></html>");
+			if (x > 0) {
+			    pw1.println("<!DOCTYPE html>");
+			    pw1.println("<html>");
+			    pw1.println("<head>");
+			    pw1.println("<meta charset='UTF-8'>");
+			    pw1.println("<title>CARZO - Registration Successful</title>");
+			    pw1.println("<link rel='stylesheet' href='css/carzo.css'>");
+			    pw1.println("</head>");
+
+			    pw1.println("<body class='success-page'>");
+			    pw1.println("<div class='success-container'>");
+			    pw1.println("<div class='success-icon'>✓</div>");
+			    pw1.println("<h1>Registration Successful!</h1>");
+			    pw1.println("<p>Your CARZO account has been created successfully.</p>");
+			    pw1.println("<a class='success-button' href='Login.html'>Go to Login Page</a>");
+			    pw1.println("</div>");
+			    pw1.println("</body>");
+			    pw1.println("</html>");
 			}
 			
-			 else {
+			else {
+			    pw1.println("<!DOCTYPE html>");
+			    pw1.println("<html>");
+			    pw1.println("<head>");
+			    pw1.println("<meta charset='UTF-8'>");
+			    pw1.println("<title>Registration Failed - CARZO</title>");
+			    pw1.println("<link rel='stylesheet' href='css/carzo.css'>");
+			    pw1.println("</head>");
 
-	                pw1.println("<html><body>");
-	                pw1.println("<h3>Registration Unsuccessful!</h3>");
-	                pw1.println("<a href='Registration.html'>Try Again</a>");
-	                pw1.println("</body></html>");
-	            }
+			    pw1.println("<body class='registration-result-page'>");
+
+			    pw1.println("<div class='result-card failure-card'>");
+			    pw1.println("<div class='result-icon'>✕</div>");
+			    pw1.println("<h1>Registration Unsuccessful!</h1>");
+			    pw1.println("<p>Sorry! We couldn't create your account.</p>");
+			    pw1.println("<p>Please check your details and try again.</p>");
+
+			    pw1.println("<a href='Registration.html' class='result-btn'>");
+			    pw1.println("Try Again</a>");
+
+			    pw1.println("<a href='Login.html' class='result-link'>");
+			    pw1.println("Back to Login</a>");
+
+			    pw1.println("</div>");
+
+			    pw1.println("</body>");
+			    pw1.println("</html>");
+			}
 
 	            stmt.close();
 	            con.close();

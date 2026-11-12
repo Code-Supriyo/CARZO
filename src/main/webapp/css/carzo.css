@@ -1392,3 +1392,71 @@ form[action="Logout"] input[type="submit"] {
     }
 
 }
+/* Registration Success Page */
+
+.success-page {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(rgba(5, 8, 13, 0.85), rgba(5, 8, 13, 0.9)),
+        url("../images/car-bg.jpg") center/cover no-repeat;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.success-container {
+    width: 90%;
+    max-width: 500px;
+    padding: 45px 30px;
+    text-align: center;
+    background: rgba(15, 22, 32, 0.95);
+    border: 1px solid #d6a84b;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+}
+
+.success-icon {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #d6a84b;
+    color: #10151d;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.success-container h1 {
+    color: #e8bd65;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.success-container p {
+    color: #d0d0d0;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.success-button {
+    display: inline-block;
+    padding: 13px 25px;
+    background: linear-gradient(135deg, #f1d18a, #c89536);
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.success-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 18px rgba(214, 168, 75, 0.3);
+}
