@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CARZO - Service Request</title>
+</head>
+<body>
+    <h2>CARZO - Service Request</h2>
+    <form action="ServiceRequestServlet" method="post">
+        <label>Car ID:</label>
+        <input type="number" name="carId" min="1" required>
+        <br><br>
+        <label>Service Type:</label>
+        <select name="serviceType" required>
+            <option value="">Select Service</option>
+            <option value="Engine Oil Change">Engine Oil Change</option>
+            <option value="Brake Inspection">Brake Inspection</option>
+            <option value="Tyre Service">Tyre Service</option>
+            <option value="Battery Check">Battery Check</option>
+            <option value="AC Service">AC Service</option>
+            <option value="General Service">General Service</option>
+        </select>
+        <br><br>
+        <label>Preferred Date:</label>
+        <input type="date" name="preferredDate" required>
+        <br><br>
+        <label>Message:</label>
+        <br>
+        <textarea name="message" rows="4" cols="40"
+                  placeholder="Describe your service requirements..."></textarea>
+        <br><br>
+        <input type="submit" value="Submit Request">
+    </form>
+    <br>
+    <a href="userMaintenance.html">Back</a>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CARZO - Add Maintenance</title>
+</head>
+<body>
+    <h2>CARZO - Add Maintenance Record</h2>
+    <form action="AddMaintenanceServelet" method="post">
+        <label>Car ID:</label>
+        <select name="carId" required>
+            <option value="">-- Select Car --</option>
+            <option value="1">Car 1</option>
+            <option value="2">Car 2</option>
+            <option value="3">Car 3</option>
+        </select>
+        <br><br>
+        <label>Maintenance Type:</label>
+        <select name="maintenanceType" required>
+            <option value="">-- Select Maintenance Type --</option>
+            <option value="Engine Oil Change">Engine Oil Change</option>
+            <option value="Brake Inspection">Brake Inspection</option>
+            <option value="Tyre Service">Tyre Service</option>
+            <option value="Battery Check">Battery Check</option>
+            <option value="AC Service">AC Service</option>
+            <option value="General Service">General Service</option>
+        </select>
+        <br><br>
+        <label>Service Date:</label>
+        <input type="date" name="serviceDate" required>
+        <br><br>
+        <label>Next Service Date:</label>
+        <input type="date" name="nextServiceDate">
+        <br><br>
+        <label>Cost (₹):</label>
+        <input type="number" name="cost" step="0.01" min="0"
+               placeholder="Enter service cost">
+        <br><br>
+        <label>Status:</label>
+        <select name="status" required>
+            <option value="">-- Select Status --</option>
+            <option value="Completed">Completed</option>
+            <option value="Upcoming">Upcoming</option>
+            <option value="Due">Due</option>
+        </select>
+        <br><br>
+        <label>Description:</label>
+        <br>
+        <textarea name="description" rows="5" cols="40"
+                  placeholder="Enter maintenance details"></textarea>
+        <br><br>
+        <input type="submit" value="Add Maintenance">
+        <input type="reset" value="Clear">
+    </form>
+    <br>
+    <a href="adminMaintenance.html">Back to Admin Maintenance</a>
+
+</body>
+</html>

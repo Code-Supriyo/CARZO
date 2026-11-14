@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CARZO - My Car Maintenance</title>
+</head>
+<body>
+    <h2>My Car Maintenance</h2>
+    <a href="serviceRequest.html">Request Service</a>
+    <br><br>
+    <h3>View Maintenance Details</h3>
+    <form action="UserMaintenanceServlet" method="get">
+        <label>Enter Car ID:</label>
+        <input type="number" name="carId"
+               placeholder="Enter your Car ID" required>
+        <input type="submit" value="View Maintenance">
+    </form>
+    <br>
+    <h3>Upcoming Maintenance</h3>
+    <p>Enter your Car ID above to view upcoming maintenance details.</p>
+    <h3>Maintenance History</h3>
+    <p>Your previous maintenance records will appear here.</p>
+    <br>
+    <a href="index.html">Back</a>
+</body>
+</html>
