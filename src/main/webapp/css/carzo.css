@@ -1,1398 +1,894 @@
-/* =========================================
-
-   CARZO - PREMIUM GLOBAL DESIGN
-
-   Applies to all CARZO HTML pages
-
-========================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
 
+/* =====================================================
+   CARZO - UNIFIED DESIGN SYSTEM (ALL PAGES)
+   Palette: Obsidian #10151d | Gallery #f5f5f5 | Gold #d6ad60
+===================================================== */
+
 :root {
-
-    --gold: #d6a84f;
-
-    --gold-light: #f1cf83;
-
-    --dark: #080b10;
-
-    --dark-card: #111821;
-
-    --input-bg: #1a2531;
-
-    --white: #ffffff;
-
-    --muted: #aab3bf;
-
-    --border: rgba(214,168,79,0.25);
-
+    --obsidian: #10151d;
+    --obsidian-soft: #171e29;
+    --gallery: #f5f5f5;
+    --surface: #ffffff;
+    --surface-tint: #faf8f3;
+    --ink: #171b20;
+    --ink-soft: #525b66;
+    --gold: #d6ad60;
+    --gold-light: #f3d18a;
+    --gold-dark: #8b6428;
+    --border: #e5dfd3;
+    --input-border: #d6dae0;
+    --shadow-card: 0 20px 50px rgba(16, 21, 29, 0.10);
+    --shadow-soft: 0 6px 20px rgba(16, 21, 29, 0.05);
 }
 
 * {
-
     box-sizing: border-box;
-
 }
 
 html {
-
     scroll-behavior: smooth;
-
 }
 
-body {
-
-    margin: 0;
-
-    min-height: 100vh;
-
-    font-family: 'DM Sans', sans-serif;
-
-    color: var(--white);
-
-    background:
-
-        linear-gradient(rgba(5,8,13,0.88), rgba(5,8,13,0.94)),
-
-        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85')
-
-        center / cover fixed no-repeat;
-
-    line-height: 1.6;
-
-}
-
-/* Headings */
-
-h1, h2, h3 {
-
-    color: var(--white);
-
-    font-family: 'Playfair Display', serif;
-
-    letter-spacing: 0.3px;
-
-}
-
-h1 {
-
-    font-size: 36px;
-
-}
-
-h2 {
-
-    font-size: 29px;
-
-}
-
-h3 {
-
-    font-size: 22px;
-
-}
-
-/* Paragraphs */
-
-p {
-
-    color: #d0d5dc;
-
-}
-
-label {
-
-    display: inline-block;
-
-    margin-bottom: 7px;
-
-    color: #e7eaf0;
-
-    font-weight: 600;
-
-}
-
-/* Links */
-
-a {
-
-    color: var(--gold-light);
-
-    text-decoration: none;
-
-    transition: 0.3s;
-
-}
-
-a:hover {
-
-    color: white;
-
-    text-decoration: underline;
-
-}
-
-/* Forms */
-
-form {
-
-    width: min(92%, 520px);
-
-    margin: 28px auto;
-
-    padding: 32px;
-
-    background: rgba(13,19,27,0.96);
-
-    border: 1px solid var(--border);
-
-    border-radius: 18px;
-
-    box-shadow: 0 18px 55px rgba(0,0,0,0.45);
-
-}
-
-/* Form headings */
-
-form h1,
-
-form h2,
-
-form h3 {
-
-    text-align: center;
-
-}
-
-/* Inputs */
-
-input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]):not([type="button"]),
-
-textarea,
-
-select {
-
-    width: 100%;
-
-    min-height: 46px;
-
-    padding: 12px 14px;
-
-    margin: 5px 0 17px;
-
-    color: white;
-
-    background: var(--input-bg);
-
-    border: 1px solid #354252;
-
-    border-radius: 8px;
-
-    outline: none;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    transition: 0.25s;
-
-}
-
-textarea {
-
-    min-height: 100px;
-
-    resize: vertical;
-
-}
-
-input:focus,
-
-textarea:focus,
-
-select:focus {
-
-    border-color: var(--gold);
-
-    box-shadow: 0 0 0 3px rgba(214,168,79,0.13);
-
-}
-
-input::placeholder,
-
-textarea::placeholder {
-
-    color: #8995a3;
-
-}
-
-select option {
-
-    background: var(--dark-card);
-
-    color: white;
-
-}
-
-/* Buttons */
-
-button,
-
-input[type="submit"],
-
-input[type="reset"] {
-
-    padding: 12px 23px;
-
-    margin: 8px 5px 8px 0;
-
-    color: #111;
-
-    background: linear-gradient(135deg, var(--gold-light), var(--gold));
-
-    border: none;
-
-    border-radius: 7px;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: 0.25s;
-
-}
-
-button:hover,
-
-input[type="submit"]:hover,
-
-input[type="reset"]:hover {
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 7px 20px rgba(214,168,79,0.2);
-
-}
-
-/* Password eye buttons */
-
-button[onclick*="togglePassword"] {
-
-    min-width: 44px;
-
-    padding: 10px;
-
-    margin-left: 5px;
-
-    color: var(--gold-light);
-
-    background: var(--input-bg);
-
-    border: 1px solid #354252;
-
-}
-
-/* Checkboxes and radio buttons */
-
-input[type="checkbox"],
-
-input[type="radio"] {
-
-    accent-color: var(--gold);
-
-    cursor: pointer;
-
-}
-
-/* Horizontal lines */
-
-hr {
-
-    border: 0;
-
-    border-top: 1px solid var(--border);
-
-    margin: 25px 0;
-
-}
-
-/* Tables */
-
-table {
-
-    width: 100%;
-
-    border-collapse: collapse;
-
-    margin: 20px 0;
-
-    background: rgba(17,24,33,0.95);
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-}
-
-th {
-
-    padding: 14px;
-
-    color: #111;
-
+::selection {
     background: var(--gold);
-
-    text-align: left;
-
+    color: var(--obsidian);
 }
 
-td {
-
-    padding: 13px;
-
-    color: #e5e9ef;
-
-    border-bottom: 1px solid #303b48;
-
-}
-
-tr:hover td {
-
-    background: rgba(214,168,79,0.07);
-
-}
-
-/* CARZO branding */
-
-.brand,
-
-.logo {
-
-    color: var(--gold-light);
-
-    font-family: 'Playfair Display', serif;
-
-    font-size: 32px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-}
-
-/* General content sections */
-
-section,
-
-main,
-
-article {
-
-    color: white;
-
-}
-
-section {
-
-    margin: 25px auto;
-
-    padding: 25px;
-
-}
-
-/* Images */
-
-img {
-
-    max-width: 100%;
-
-    height: auto;
-
-    border-radius: 10px;
-
-}
-
-/* Lists */
-
-li {
-
-    margin: 8px 0;
-
-}
-
-/* Profile and dashboard content */
-
-.profile,
-
-.dashboard,
-
-.content-card,
-
-.car-card {
-
-    padding: 25px;
-
-    margin: 20px auto;
-
-    background: rgba(17,24,33,0.95);
-
-    border: 1px solid var(--border);
-
-    border-radius: 14px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-
-}
-
-/* Form spacing */
-
-form br {
-
-    line-height: 1.5;
-
-}
-
-/* Responsive design */
-
-@media (max-width: 600px) {
-
-    form {
-
-        width: 94%;
-
-        padding: 22px 17px;
-
-    }
-
-    h1 {
-
-        font-size: 28px;
-
-    }
-
-    h2 {
-
-        font-size: 24px;
-
-    }
-
-    button,
-
-    input[type="submit"],
-
-    input[type="reset"] {
-
-        max-width: 100%;
-
-    }
-
-    table {
-
-        display: block;
-
-        overflow-x: auto;
-
-    }
-
-}
-
-/* =================================
-
-   CARZO HOME & PROFILE PAGE DESIGN
-
-================================= */
-
-body {
-
+/* =====================================================
+   SHARED PAGE SHELL (ALL NON-HOME / NON-SUCCESS PAGES)
+===================================================== */
+
+body:not(.carzo-home):not(.success-page) {
     margin: 0;
-
-    padding: 40px 6%;
-
     min-height: 100vh;
-
-    color: #f5f5f5;
-
-    font-family: 'Segoe UI', Arial, sans-serif;
-
-    background-attachment: fixed;
-
-    background-position: center;
-
-    background-size: cover;
-
-    line-height: 1.7;
-
+    position: relative;
+    padding: 40px 5% 130px;
+    background:
+        radial-gradient(circle at 50% 240px, rgba(214, 173, 96, 0.09), transparent 58%),
+        var(--gallery);
+    color: var(--ink);
+    font-family: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+    line-height: 1.65;
 }
 
-/* Main Headings */
-
-h1 {
-
-    color: #f3c66b;
-
-    font-size: 38px;
-
-    margin-bottom: 25px;
-
-    letter-spacing: 1px;
-
+/* Top dark luxury car hero banner */
+body:not(.carzo-home):not(.success-page)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 315px;
+    background:
+        linear-gradient(105deg, rgba(10, 15, 23, 0.90) 0%, rgba(10, 15, 23, 0.62) 52%, rgba(10, 15, 23, 0.85) 100%),
+        url("../images/car-bg.png") center 55% / cover no-repeat,
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85") center 55% / cover no-repeat;
+    border-bottom: 3px solid rgba(214, 173, 96, 0.55);
+    z-index: 0;
+    pointer-events: none;
 }
 
-h2 {
-
-    color: #f3c66b;
-
-    font-size: 25px;
-
-    margin-top: 25px;
-
-    margin-bottom: 18px;
-
+/* Bottom dark luxury CARZO footer (eliminates empty bottom void) */
+body:not(.carzo-home):not(.success-page)::after {
+    content: "CARZO   •   Where Elegance Meets the Road   •   © 2026 CARZO Luxury Automotive";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 82px;
+    padding: 22px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--obsidian);
+    border-top: 2px solid rgba(214, 173, 96, 0.45);
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    box-shadow: 0 -10px 28px rgba(16, 21, 29, 0.08);
+    z-index: 1;
 }
 
-h3 {
-
-    color: #e9bd62;
-
+/* Keep all body children above hero backdrop */
+body:not(.carzo-home):not(.success-page) > * {
+    position: relative;
+    z-index: 1;
 }
 
-/* Section Dividers */
+/* =====================================================
+   FORM PAGES (Login, SignUp, EditProfile, ChangePassword)
+===================================================== */
 
-hr {
-
-    border: 0;
-
-    height: 1px;
-
-    background: linear-gradient(
-
-        to right,
-
-        transparent,
-
-        #c99b45,
-
-        transparent
-
-    );
-
-    margin: 30px 0;
-
+/* Hero text above the form sits over the dark car banner */
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) h1,
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) h2,
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) > p,
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) > div:not(:has(form)) p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 680px;
 }
 
-/* Links as Premium Buttons */
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) h1 {
+    margin: 4px auto 6px;
+    color: var(--gold-light);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(30px, 4vw, 40px);
+    letter-spacing: 3px;
+    text-shadow: 0 3px 16px rgba(0, 0, 0, 0.55);
+}
 
-a {
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) h2 {
+    margin: 14px auto 6px;
+    color: #ffffff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(22px, 3vw, 28px);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
 
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) > p,
+body:not(.carzo-home):not(.success-page):not(.profile-page):not(.wishlist-page):not(:has(.profile-container)):not(:has(.personal-info)):not(:has(form[action="Logout"])):not(:has(#wishlistGrid)):not(:has(table)) > div p {
+    margin: 4px auto 8px;
+    color: #dbe1e8;
+    font-size: 14px;
+}
+
+/* Main white elevated form card */
+body:not(.carzo-home):not(.success-page) form:not([action="Logout"]):not(.home-search) {
+    width: min(92%, 530px);
+    margin: 26px auto 18px;
+    padding: 36px 38px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    color: var(--ink);
+    text-align: left;
+}
+
+body:not(.carzo-home) form:not([action="Logout"]):not(.home-search) h1,
+body:not(.carzo-home) form:not([action="Logout"]):not(.home-search) h2,
+body:not(.carzo-home) form:not([action="Logout"]):not(.home-search) h3 {
+    color: var(--ink);
+    text-align: center;
+    text-shadow: none;
+    margin-top: 0;
+}
+
+body:not(.carzo-home) form:not([action="Logout"]):not(.home-search) p {
+    color: var(--ink-soft);
+    text-shadow: none;
+}
+
+body:not(.carzo-home) label {
     display: inline-block;
-
-    color: #f4c66b;
-
-    text-decoration: none;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    margin: 8px 12px 8px 0;
-
-    padding: 11px 20px;
-
-    border: 1px solid rgba(222, 177, 91, 0.4);
-
-    border-radius: 8px;
-
-    background: rgba(12, 18, 27, 0.85);
-
-    transition: all 0.3s ease;
-
-}
-
-a:hover {
-
-    color: #111;
-
-    background: #e8bd68;
-
-    border-color: #e8bd68;
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 6px 20px rgba(232, 189, 104, 0.2);
-
-}
-
-/* Information Text */
-
-p {
-
-    color: #e0e4eb;
-
-    font-size: 16px;
-
-    margin: 15px 0;
-
-}
-
-/* Strong Labels */
-
-strong, b {
-
-    color: #f3c66b;
-
-}
-
-/* Forms and Buttons */
-
-button,
-
-input[type="submit"],
-
-input[type="reset"] {
-
-    background: linear-gradient(135deg, #f2ce7c, #c99537);
-
-    color: #111;
-
-    border: none;
-
-    padding: 12px 25px;
-
-    border-radius: 7px;
-
+    margin-bottom: 6px;
+    color: #202630;
+    font-size: 13px;
     font-weight: 700;
+    letter-spacing: 0.2px;
+}
 
+/* Inputs, selects, textareas */
+body:not(.carzo-home) input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]):not([type="button"]),
+body:not(.carzo-home) textarea,
+body:not(.carzo-home) select {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 14px;
+    margin: 4px 0 18px;
+    color: var(--ink);
+    background: #fafbfc;
+    border: 1px solid var(--input-border);
+    border-radius: 9px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+body:not(.carzo-home) textarea {
+    min-height: 96px;
+    resize: vertical;
+}
+
+body:not(.carzo-home) input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]):not([type="button"]):focus,
+body:not(.carzo-home) textarea:focus,
+body:not(.carzo-home) select:focus {
+    background: #ffffff;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(214, 173, 96, 0.18);
+}
+
+body:not(.carzo-home) input::placeholder,
+body:not(.carzo-home) textarea::placeholder {
+    color: #8c95a2;
+}
+
+body:not(.carzo-home) select option {
+    background: #ffffff;
+    color: var(--ink);
+}
+
+body:not(.carzo-home) input[type="checkbox"],
+body:not(.carzo-home) input[type="radio"] {
+    accent-color: var(--gold);
     cursor: pointer;
-
-    transition: 0.3s;
-
 }
 
-button:hover,
-
-input[type="submit"]:hover,
-
-input[type="reset"]:hover {
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 5px 15px rgba(230, 183, 91, 0.3);
-
+/* Inline password toggle eye button fix (stays on same row as input) */
+body:not(.carzo-home) input[type="password"]:has(+ button[onclick*="togglePassword"]),
+body:not(.carzo-home) input[type="text"]:has(+ button[onclick*="togglePassword"]),
+body:not(.carzo-home) input[type="password"]:has(+ br + button[onclick*="togglePassword"]),
+body:not(.carzo-home) input[type="text"]:has(+ br + button[onclick*="togglePassword"]) {
+    width: calc(100% - 62px) !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
 }
 
-/* Responsive Design */
-
-@media (max-width: 768px) {
-
-    body {
-
-        padding: 25px 5%;
-
-    }
-
-    h1 {
-
-        font-size: 28px;
-
-    }
-
-    h2 {
-
-        font-size: 21px;
-
-    }
-
-    a {
-
-        margin: 6px 4px;
-
-    }
-
+body:not(.carzo-home) input + br:has(+ button[onclick*="togglePassword"]) {
+    display: none !important;
 }
 
-/* =====================================
-
-   CARZO PREMIUM DASHBOARD ENHANCEMENT
-
-===================================== */
-
-/* Main page spacing */
-
-body {
-
-    padding: 45px 7%;
-
-    line-height: 1.8;
-
-}
-
-/* Headings */
-
-h1 {
-
-    font-size: 38px;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 25px;
-
-    text-shadow: 0 3px 15px rgba(0,0,0,0.5);
-
-}
-
-h2 {
-
-    font-size: 25px;
-
-    margin-bottom: 20px;
-
-}
-
-/* Section headings */
-
-h2, h3 {
-
-    color: #e9bd62;
-
-}
-
-/* All links side by side */
-
-a {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-width: 125px;
-
-    margin: 8px 10px 8px 0;
-
-    padding: 12px 22px;
-
-    border: 1px solid rgba(226, 183, 99, 0.5);
-
-    border-radius: 8px;
-
-    background: rgba(13, 20, 30, 0.9);
-
-    color: #f1c66e;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    text-align: center;
-
-    transition: all 0.3s ease;
-
-}
-
-a:hover {
-
-    background: linear-gradient(135deg, #f3d18a, #c89536);
-
-    color: #111;
-
-    transform: translateY(-4px);
-
-    box-shadow: 0 8px 22px rgba(218, 170, 78, 0.25);
-
-}
-
-/* Dashboard sections */
-
-body > h2,
-
-body > hr {
-
-    margin-top: 30px;
-
-}
-
-/* Section divider */
-
-hr {
-
-    border: none;
-
-    height: 1px;
-
-    background: linear-gradient(
-
-        90deg,
-
-        transparent,
-
-        #d5a94f,
-
-        transparent
-
-    );
-
-    margin: 35px 0;
-
-}
-
-/* Paragraph information */
-
-p {
-
-    font-size: 16px;
-
-    color: #e2e6ed;
-
-    margin: 13px 0;
-
-}
-
-/* Profile information */
-
-strong, b {
-
-    color: #edc36f;
-
-}
-
-/* Buttons */
-
-button,
-
-input[type="submit"],
-
-input[type="reset"] {
-
-    min-width: 130px;
-
-    padding: 13px 24px;
-
-    border-radius: 8px;
-
-    background: linear-gradient(135deg, #f3d18a, #c89536);
-
-    color: #151515;
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    border: none;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-
-}
-
-button:hover,
-
-input[type="submit"]:hover,
-
-input[type="reset"]:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 7px 20px rgba(218, 170, 78, 0.3);
-
-}
-
-/* Focus effect */
-
-input:focus,
-
-textarea:focus,
-
-select:focus {
-
-    outline: 2px solid #d9ad57;
-
-    outline-offset: 2px;
-
-}
-
-/* Selection color */
-::selection
- {
-
-    background: #d9ad57;
-
-    color: #111;
-
-}
-
-/* Mobile responsive */
-
-@media (max-width: 768px) {
-
-    body {
-
-        padding: 25px 5%;
-
-    }
-
-    h1 {
-
-        font-size: 28px;
-
-    }
-
-    a {
-
-        min-width: 110px;
-
-        padding: 10px 14px;
-
-        margin: 6px 5px 6px 0;
-
-    }
-
-}
-
-/* Force dashboard links side by side */
-
-body a {
-
+body:not(.carzo-home) button[onclick*="togglePassword"] {
     display: inline-flex !important;
-
-    width: auto !important;
-
-    min-width: 130px;
-
-    margin: 10px 12px 10px 0 !important;
-
-    padding: 13px 22px !important;
-
     align-items: center;
-
     justify-content: center;
-
-    box-sizing: border-box;
-
-    border: 1px solid #d9ad57 !important;
-
+    width: 46px !important;
+    min-width: 46px !important;
+    height: 46px !important;
+    padding: 0 !important;
+    margin: 4px 0 18px 8px !important;
+    vertical-align: middle !important;
+    background: #f6eedf !important;
+    color: var(--gold-dark) !important;
+    border: 1px solid #e2c78e !important;
     border-radius: 9px !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
 
-    background: linear-gradient(135deg, #182333, #080d15) !important;
+body:not(.carzo-home) button[onclick*="togglePassword"]:hover {
+    background: var(--gold) !important;
+    color: var(--obsidian) !important;
+    transform: none !important;
+}
 
-    color: #f3c66e !important;
+/* Form primary & secondary buttons */
+body:not(.carzo-home) button:not([onclick*="togglePassword"]),
+body:not(.carzo-home) input[type="submit"] {
+    min-width: 130px;
+    padding: 13px 24px;
+    margin: 8px 10px 6px 0;
+    color: var(--obsidian);
+    background: linear-gradient(135deg, var(--gold-light), #c89536);
+    border: none;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+body:not(.carzo-home) button[type="reset"],
+body:not(.carzo-home) input[type="reset"] {
+    min-width: 115px;
+    padding: 13px 22px;
+    margin: 8px 10px 6px 0;
+    background: #ffffff;
+    color: var(--gold-dark);
+    border: 1px solid var(--gold);
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+body:not(.carzo-home) button:not([onclick*="togglePassword"]):hover,
+body:not(.carzo-home) input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(200, 149, 54, 0.28);
+}
+
+body:not(.carzo-home) button[type="reset"]:hover,
+body:not(.carzo-home) input[type="reset"]:hover {
+    background: #f6eedf;
+    color: var(--obsidian);
+    transform: translateY(-2px);
+}
+
+/* Links inside forms (e.g. Forgot Password?) */
+body:not(.carzo-home) form a {
+    display: inline-block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 4px 2px !important;
+    margin: 4px 0 8px !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--gold-dark) !important;
+    font-size: 14px;
+    font-weight: 700;
     text-decoration: none !important;
-
-    transition: 0.3s ease;
-
 }
 
-body a:hover {
-
-    background: linear-gradient(135deg, #f3d18a, #c89536) !important;
-
-    color: #111 !important;
-
-    transform: translateY(-4px);
-
-    box-shadow: 0 8px 20px #c8953640;
-
+body:not(.carzo-home) form a:hover {
+    color: var(--obsidian) !important;
+    text-decoration: underline !important;
+    background: transparent !important;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
-/* Center Logout Button */
-
-form[action="Logout"] {
-
-    display: flex;
-
-    justify-content: center;
-
-    margin: 35px auto;
-
+/* Secondary action card below form (Don't have an account? Create Account / Back to Login) */
+body:not(.carzo-home):not(.success-page) form ~ p,
+body:not(.carzo-home):not(.success-page) form ~ div:not(.profile-container):not(.account-options) {
+    width: min(92%, 530px);
+    margin: 0 auto 22px;
+    padding: 16px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    color: var(--ink-soft) !important;
+    text-align: center !important;
+    font-size: 14px;
 }
 
-form[action="Logout"] button,
-
-form[action="Logout"] input[type="submit"] {
-
-    min-width: 150px;
-
-    padding: 14px 35px;
-
-    border-radius: 10px;
-
-    font-size: 16px;
-
-}
-
-/* Personal Information Section */
-
-.personal-info {
-
-    text-align: center;
-
-    margin: 35px auto;
-
-    padding: 25px;
-
-    max-width: 750px;
-
-}
-
-.personal-info h2 {
-
-    text-align: center;
-
-    margin-bottom: 30px;
-
-}
-
-.personal-info p {
-
-    text-align: center;
-
-    margin: 18px 0;
-
-    font-size: 16px;
-
-}
-
-/* Account Options */
-
-.account-options {
-
-    text-align: center;
-
-    margin: 40px auto;
-
-    padding: 25px;
-
-}
-
-.account-options h2 {
-
-    text-align: center;
-
-    margin-bottom: 30px;
-
-}
-
-.account-options .option-buttons {
-
-    display: flex;
-
-    justify-content: center;
-
+body:not(.carzo-home):not(.success-page) form ~ p a,
+body:not(.carzo-home):not(.success-page) form ~ div a,
+body:not(.carzo-home):not(.success-page) form ~ a {
+    display: inline-flex !important;
     align-items: center;
-
-    gap: 25px;
-
-    flex-wrap: nowrap;
-
+    justify-content: center;
+    padding: 8px 16px !important;
+    margin: 0 0 0 8px !important;
+    background: #faf4e6 !important;
+    border: 1px solid var(--gold) !important;
+    border-radius: 8px !important;
+    color: var(--gold-dark) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    transition: 0.2s ease;
 }
 
-.account-options .option-buttons a {
-
-    min-width: 145px;
-
-    padding: 17px 20px;
-
-    text-align: center;
-
-    text-decoration: none;
-
-    border: 1px solid #d6a746;
-
-    border-radius: 12px;
-
-    background: rgba(15, 22, 32, 0.9);
-
-    color: #f5c15d;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-
+body:not(.carzo-home):not(.success-page) form ~ p a:hover,
+body:not(.carzo-home):not(.success-page) form ~ div a:hover,
+body:not(.carzo-home):not(.success-page) form ~ a:hover {
+    background: var(--gold) !important;
+    color: var(--obsidian) !important;
+    transform: translateY(-2px);
 }
 
-.account-options .option-buttons a:hover {
+/* =====================================================
+   MY PROFILE PAGE (Profile.html / Profile Servlet)
+   Works with or without body.profile-page class
+===================================================== */
 
-    background: #d6a746;
-
-    color: #080b10;
-
-    transform: translateY(-4px);
-
+body.profile-page,
+body:not(.carzo-home):has(.profile-container),
+body:not(.carzo-home):has(.personal-info),
+body:not(.carzo-home):has(form[action="Logout"]) {
+    padding: 36px 4% 130px !important;
+    background: var(--gallery) !important;
+    color: var(--ink) !important;
 }
 
-/* Responsive */
-
-@media (max-width: 750px) {
-
-    .account-options .option-buttons {
-
-        flex-wrap: wrap;
-
-        gap: 15px;
-
-    }
-
+body.profile-page::before,
+body:not(.carzo-home):has(.profile-container)::before,
+body:not(.carzo-home):has(.personal-info)::before,
+body:not(.carzo-home):has(form[action="Logout"])::before {
+    height: 190px !important;
 }
-
-/* =========================================
-   CARZO - MY PROFILE PAGE
-   Luxury Black & Gold Theme
-========================================= */
-
-.profile-page {
-    min-height: 100vh;
-    padding: 45px 20px;
-    box-sizing: border-box;
-}
-
-/* Main Container */
 
 .profile-container {
-    width: 90%;
-    max-width: 1150px;
-    margin: 0 auto;
-    padding: 35px;
-
-    background: rgba(10, 15, 23, 0.88);
-
-    border: 1px solid rgba(232, 180, 75, 0.35);
+    width: min(1040px, 94%);
+    margin: 10px auto 30px;
+    padding: 0 38px 36px;
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
     border-radius: 18px;
-
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-
-    box-sizing: border-box;
+    box-shadow: var(--shadow-card) !important;
+    overflow: hidden;
+    color: var(--ink);
 }
 
-/* =========================================
-   PROFILE HEADER
-========================================= */
+/* Luxury car showcase banner inside the top of the profile sheet */
+.profile-container::before {
+    content: "CARZO   •   MEMBER PROFILE";
+    display: flex;
+    align-items: flex-end;
+    width: calc(100% + 76px);
+    height: 145px;
+    margin: 0 -38px 28px -38px;
+    padding: 20px 36px;
+    background:
+        linear-gradient(95deg, rgba(10, 15, 23, 0.92) 0%, rgba(10, 15, 23, 0.45) 65%, rgba(10, 15, 23, 0.78) 100%),
+        url("../images/car-bg.png") center 58% / cover no-repeat,
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85") center 58% / cover no-repeat;
+    border-bottom: 3px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.profile-header,
+.profile-container > h1,
+.profile-container > h2,
+.profile-container > p {
+    text-align: center;
+}
 
 .profile-header {
-    text-align: center;
-    padding-bottom: 25px;
-
-    border-bottom: 1px solid rgba(232, 180, 75, 0.3);
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
 }
 
+.profile-container h1,
 .profile-header h1 {
-    color: #f5c66b;
-    font-size: 36px;
-    margin-bottom: 18px;
+    margin: 0 0 8px;
+    color: var(--ink) !important;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 3.5vw, 36px);
+    text-shadow: none !important;
 }
 
+.profile-container h2,
 .profile-header h2 {
-    color: #ffffff;
-    font-size: 25px;
+    margin: 0 0 8px;
+    color: var(--gold-dark) !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: none !important;
 }
 
-.profile-header p {
-    color: #b9c0cb;
-    font-size: 15px;
-    margin-top: 12px;
-}
-
-/* =========================================
-   PERSONAL INFORMATION
-========================================= */
-
-.profile-information {
-    padding: 30px 10px;
-    text-align: center;
-}
-
+.profile-container h3,
 .profile-information h3,
-.account-options h3 {
-    color: #f5c66b;
-    font-size: 25px;
+.account-options h3,
+.personal-info h2 {
+    margin: 0 0 22px;
+    color: var(--ink) !important;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 25px;
 }
 
-/* Information Grid */
+.profile-container p,
+.profile-header p {
+    color: var(--ink-soft) !important;
+}
 
-.profile-details {
-    max-width: 850px;
+.profile-container hr,
+body:not(.carzo-home) hr {
+    border: 0;
+    height: 1px;
+    margin: 28px 0;
+    background: linear-gradient(90deg, transparent, rgba(214, 173, 96, 0.55), transparent);
+}
+
+.profile-information,
+.personal-info {
+    padding: 8px 0 6px;
     margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 18px;
-}
-
-/* Information Cards */
-
-.info-card {
-    background: rgba(30, 40, 53, 0.85);
-
-    border: 1px solid rgba(232, 180, 75, 0.25);
-
-    border-radius: 12px;
-
-    padding: 20px;
-
+    max-width: 900px;
     text-align: center;
+}
 
-    transition: 0.3s ease;
+/* 2-Column Details Grid */
+.profile-details {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
 
+/* Style BOTH .info-card and plain <p> / <div> items inside .profile-details */
+.info-card,
+.profile-details > p,
+.profile-details > div,
+.personal-info > p {
+    margin: 0 !important;
+    padding: 18px 20px;
+    background: var(--surface-tint) !important;
+    border: 1px solid #e7decb !important;
+    border-radius: 12px;
+    text-align: left !important;
+    color: var(--ink) !important;
+    font-size: 15px;
     overflow-wrap: anywhere;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.info-card:hover {
-    transform: translateY(-4px);
-
-    border-color: #e8b44b;
-
-    background: rgba(40, 49, 62, 0.95);
-
-    box-shadow: 0 6px 18px rgba(232, 180, 75, 0.12);
+.info-card:hover,
+.profile-details > p:hover,
+.profile-details > div:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold) !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(214, 173, 96, 0.12);
 }
 
-/* Information Labels */
-
-.info-label {
+.info-label,
+.profile-details strong,
+.profile-details b,
+.personal-info strong,
+.personal-info b {
     display: block;
-
-    color: #e8b44b;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
+    color: var(--gold-dark) !important;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
 }
-
-/* Information Values */
 
 .info-value {
     display: block;
-
-    color: #ffffff;
-
+    color: var(--ink) !important;
     font-size: 16px;
-
-    line-height: 1.6;
+    font-weight: 600;
 }
 
-/* =========================================
-   ACCOUNT OPTIONS
-========================================= */
-
+/* Account Options & Action Buttons */
 .account-options {
-    padding: 25px 10px 10px;
-
-    border-top: 1px solid rgba(232, 180, 75, 0.3);
-}
-
-/* All Buttons in One Line */
-
-.profile-buttons {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
-
-    max-width: 900px;
-
-    margin: 30px auto 10px;
-}
-
-/* Individual Buttons */
-
-.profile-btn {
-    flex: 1;
-
-    min-width: 0;
-
+    padding: 8px 0 4px;
+    margin: 0 auto;
     text-align: center;
-
-    text-decoration: none;
-
-    color: #f5c66b;
-
-    background: rgba(22, 31, 43, 0.95);
-
-    border: 1px solid #c89536;
-
-    border-radius: 10px;
-
-    padding: 15px 10px;
-
-    font-size: 15px;
-
-    font-weight: bold;
-
-    transition: all 0.3s ease;
-
-    box-sizing: border-box;
+    border-top: none;
 }
 
-/* Button Hover Effect */
-
-.profile-btn:hover {
-    color: #10151d;
-
-    background: #e8b44b;
-
-    transform: translateY(-4px);
-
-    box-shadow: 0 6px 18px rgba(232, 180, 75, 0.25);
+.profile-buttons,
+.account-options .option-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    max-width: 860px;
+    margin: 18px auto 6px;
 }
 
-/* Logout Button */
+.profile-buttons .profile-btn,
+.account-options .option-buttons a,
+.profile-container a {
+    flex: 1 1 180px;
+    max-width: 220px;
+    min-height: 46px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px !important;
+    margin: 0 !important;
+    background: #fff9ec !important;
+    border: 1px solid var(--gold) !important;
+    border-radius: 10px !important;
+    color: var(--gold-dark) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
 
+.profile-buttons .profile-btn:hover,
+.account-options .option-buttons a:hover,
+.profile-container a:hover {
+    background: linear-gradient(135deg, var(--gold-light), #c89536) !important;
+    color: var(--obsidian) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(214, 173, 96, 0.24);
+}
+
+/* Keep Logout form flat inside Profile */
+.profile-container form[action="Logout"],
+body:not(.carzo-home) form[action="Logout"] {
+    width: auto !important;
+    max-width: none !important;
+    margin: 22px auto 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex;
+    justify-content: center;
+}
+
+form[action="Logout"] button,
+form[action="Logout"] input[type="submit"],
 .logout-btn {
-    border-color: #d89b47;
+    min-width: 170px;
+    padding: 12px 28px !important;
+    background: var(--obsidian) !important;
+    color: var(--gold-light) !important;
+    border: 1px solid var(--gold) !important;
+    border-radius: 10px !important;
+    font-weight: 700;
 }
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-
-@media (max-width: 700px) {
-
-    .profile-container {
-        width: 100%;
-        padding: 20px 15px;
-    }
-
-    .profile-header h1 {
-        font-size: 28px;
-    }
-
-    .profile-details {
-        grid-template-columns: 1fr;
-    }
-
-    .profile-buttons {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .profile-btn {
-        flex: 1 1 45%;
-    }
-
+form[action="Logout"] button:hover,
+form[action="Logout"] input[type="submit"]:hover {
+    background: var(--gold) !important;
+    color: var(--obsidian) !important;
 }
 
-@media (max-width: 400px) {
+/* =====================================================
+   SHARED TOP NAVBAR FOR SUBPAGES (Wishlist, Purchase History)
+===================================================== */
 
-    .profile-btn {
-        flex: 1 1 100%;
-    }
-
+body:not(.carzo-home) header,
+body:not(.carzo-home) nav {
+    width: 100%;
+    padding: 14px 6%;
+    margin: -40px -5% 30px;
+    width: calc(100% + 10%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: var(--obsidian);
+    border-bottom: 2px solid rgba(214, 173, 96, 0.4);
 }
-/* Registration Success Page */
+
+body:not(.carzo-home) header a,
+body:not(.carzo-home) nav a {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 8px 15px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 1px solid rgba(214, 173, 96, 0.35) !important;
+    border-radius: 8px !important;
+    color: var(--gold-light) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+body:not(.carzo-home) header a:hover,
+body:not(.carzo-home) nav a:hover {
+    background: var(--gold) !important;
+    color: var(--obsidian) !important;
+}
+
+/* =====================================================
+   WISHLIST PAGE (.wishlist-page)
+===================================================== */
+
+.wishlist-page,
+body:not(.carzo-home):has(#wishlistGrid) {
+    background: var(--gallery) !important;
+    color: var(--ink) !important;
+}
+
+.wishlist-page::before,
+body:not(.carzo-home):has(#wishlistGrid)::before {
+    height: 155px !important;
+}
+
+.wishlist-container {
+    width: min(1200px, 94%);
+    margin: 14px auto 40px;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.wishlist-container::before {
+    content: "CARZO   •   SAVED GARAGE";
+    display: flex;
+    align-items: flex-end;
+    width: calc(100% + 56px);
+    height: 135px;
+    margin: -28px -28px 24px -28px;
+    padding: 18px 28px;
+    border-radius: 15px 15px 0 0;
+    background:
+        linear-gradient(95deg, rgba(10, 15, 23, 0.92) 0%, rgba(10, 15, 23, 0.45) 65%, rgba(10, 15, 23, 0.78) 100%),
+        url("../images/car-bg.png") center 58% / cover no-repeat,
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85") center 58% / cover no-repeat;
+    border-bottom: 3px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.wishlist-title {
+    margin: 0 0 6px;
+    color: var(--ink) !important;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+}
+
+.wishlist-subtitle {
+    margin: 0 0 26px;
+    color: var(--ink-soft) !important;
+    font-size: 15px;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+
+.wishlist-car-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 13px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wishlist-car-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 26px rgba(16, 21, 29, 0.09);
+}
+
+.wishlist-car-image {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    background: #f0f1f2;
+}
+
+.wishlist-car-details {
+    padding: 18px;
+}
+
+.wishlist-brand {
+    color: #9b793f;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.wishlist-car-details h3 {
+    color: #20242a;
+    font-size: 20px;
+    margin: 6px 0;
+}
+
+.wishlist-price {
+    color: #956d2c;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.wishlist-remove {
+    width: 100%;
+    padding: 11px;
+    margin-top: 12px;
+    border: 1px solid var(--gold) !important;
+    border-radius: 8px;
+    background: #fff8e9 !important;
+    color: var(--gold-dark) !important;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.wishlist-remove:hover {
+    background: var(--gold) !important;
+    color: var(--obsidian) !important;
+}
+
+.wishlist-empty {
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+    text-align: center;
+    background: var(--surface-tint);
+    border-radius: 13px;
+    border: 1px dashed var(--gold);
+}
+
+.empty-heart {
+    font-size: 60px;
+    color: var(--gold);
+}
+
+.wishlist-empty h2 {
+    color: var(--ink) !important;
+}
+
+.wishlist-empty p {
+    color: var(--ink-soft) !important;
+}
+
+.wishlist-empty a {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--gold-light), #c89536);
+    color: var(--obsidian);
+    border-radius: 8px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.wishlist-error {
+    color: #b42318;
+    padding: 15px;
+    background: #fff0f0;
+    border-radius: 8px;
+}
+
+/* =====================================================
+   PURCHASE HISTORY & TABLE PAGES
+===================================================== */
+
+body:not(.carzo-home):has(table)::before {
+    height: 175px !important;
+}
+
+body:not(.carzo-home):has(table) > h1,
+body:not(.carzo-home):has(table) > h2 {
+    text-align: center;
+    color: var(--gold-light);
+    font-family: 'Playfair Display', Georgia, serif;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+body:not(.carzo-home):has(table) > p {
+    text-align: center;
+    color: #dfe4ec;
+}
+
+body:not(.carzo-home) table {
+    width: min(1150px, 100%);
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+body:not(.carzo-home) th {
+    padding: 15px 16px;
+    background: var(--obsidian);
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    text-align: left;
+    border-bottom: 2px solid var(--gold);
+}
+
+body:not(.carzo-home) td {
+    padding: 14px 16px;
+    color: var(--ink);
+    font-size: 14px;
+    border-bottom: 1px solid #ece8df;
+}
+
+body:not(.carzo-home) tr:hover td {
+    background: #faf6ec;
+}
+
+/* =====================================================
+   REGISTRATION SUCCESS PAGE (.success-page)
+===================================================== */
 
 .success-page {
     min-height: 100vh;
@@ -1401,62 +897,677 @@ form[action="Logout"] input[type="submit"] {
     justify-content: center;
     align-items: center;
     background:
-        linear-gradient(rgba(5, 8, 13, 0.85), rgba(5, 8, 13, 0.9)),
-        url("../images/car-bg.jpg") center/cover no-repeat;
-    font-family: Arial, sans-serif;
-    color: white;
+        linear-gradient(rgba(8, 12, 18, 0.84), rgba(8, 12, 18, 0.90)),
+        url("../images/car-bg.png") center/cover no-repeat,
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85") center/cover no-repeat;
+    font-family: 'DM Sans', Arial, sans-serif;
 }
 
 .success-container {
     width: 90%;
     max-width: 500px;
-    padding: 45px 30px;
+    padding: 44px 32px;
     text-align: center;
-    background: rgba(15, 22, 32, 0.95);
-    border: 1px solid #d6a84b;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--gold);
     border-radius: 18px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
 }
 
 .success-icon {
-    width: 75px;
-    height: 75px;
+    width: 72px;
+    height: 72px;
     margin: 0 auto 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background: #d6a84b;
-    color: #10151d;
-    font-size: 45px;
+    background: linear-gradient(135deg, var(--gold-light), #c89536);
+    color: var(--obsidian);
+    font-size: 40px;
     font-weight: bold;
 }
 
 .success-container h1 {
-    color: #e8bd65;
+    color: var(--ink);
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 28px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .success-container p {
-    color: #d0d0d0;
-    font-size: 16px;
+    color: var(--ink-soft);
+    font-size: 15px;
     line-height: 1.6;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .success-button {
     display: inline-block;
-    padding: 13px 25px;
-    background: linear-gradient(135deg, #f1d18a, #c89536);
-    color: #111;
+    padding: 13px 26px;
+    background: linear-gradient(135deg, var(--gold-light), #c89536);
+    color: var(--obsidian);
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: 0.3s;
+    font-weight: 800;
+    border-radius: 9px;
+    transition: 0.25s;
 }
 
 .success-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(214, 173, 96, 0.35);
+}
+
+/* =====================================================
+   RESPONSIVE RULES (SUBPAGES)
+===================================================== */
+
+@media (max-width: 720px) {
+    body:not(.carzo-home):not(.success-page) {
+        padding: 28px 4% 120px;
+    }
+
+    body:not(.carzo-home):not(.success-page)::before {
+        height: 255px;
+    }
+
+    body:not(.carzo-home):not(.success-page) form:not([action="Logout"]):not(.home-search) {
+        padding: 26px 20px;
+    }
+
+    .profile-container {
+        padding: 0 18px 26px;
+    }
+
+    .profile-container::before {
+        width: calc(100% + 36px);
+        height: 120px;
+        margin: 0 -18px 22px -18px;
+        padding: 14px 20px;
+    }
+
+    .profile-details {
+        grid-template-columns: 1fr;
+    }
+
+    .wishlist-container {
+        padding: 18px;
+    }
+
+    .wishlist-container::before {
+        width: calc(100% + 36px);
+        height: 115px;
+        margin: -18px -18px 18px -18px;
+        padding: 14px 18px;
+    }
+
+    body:not(.carzo-home) table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* ==========================================
+   CARZO HOME PAGE - SHOPPING STYLE
+========================================== */
+
+.carzo-home {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    background: #f5f5f5 !important;
+    color: #20242a !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.carzo-home .home-navbar {
+    min-height: 76px;
+    padding: 12px 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #10151d;
+    border-bottom: 1px solid rgba(214,173,96,.3);
+    box-sizing: border-box;
+}
+
+.carzo-home .home-logo {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-decoration: none;
+}
+
+.carzo-home .home-logo span,
+.carzo-home .home-footer h2 span {
+    color: #d6ad60;
+}
+
+.carzo-home .home-search {
+    flex: 1 1 520px;
+    max-width: 620px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: #fff;
+    border-radius: 9px;
+    overflow: hidden;
+    margin: 0;
+    box-shadow: none;
+}
+
+.carzo-home .home-search input {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    border: 0;
+    outline: 0;
+    padding: 0 16px;
+    color: #222;
+    background: #fff;
+}
+
+.carzo-home .home-search button {
+    flex: 0 0 58px;
+    width: 58px;
+    height: 48px;
+    border: 0;
+    background: #d6ad60;
+    color: #111;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.carzo-home .home-nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    margin: 0;
+}
+
+.carzo-home .home-nav-right form {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.carzo-home .user-avatar {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f1cf83, #c89536);
+    color: #10151d;
+    font-size: 23px;
+}
+
+.carzo-home .welcome-user {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 14px 5px 6px;
+    border: 1px solid #d6ad60;
+    border-radius: 28px;
+    background: #111821;
+    color: white;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.carzo-home .welcome-user strong {
+    color: #e6bd70;
+}
+
+.carzo-home .home-logout {
+    width: auto;
+    min-height: 42px;
+    margin: 0;
+    padding: 11px 19px;
+    background: transparent;
+    border: 1px solid #d6ad60;
+    border-radius: 7px;
+    color: #e6bd70;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.carzo-home .home-logout:hover {
+    background: #d6ad60;
+    color: #111;
+}
+
+.carzo-home section {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.carzo-home a {
+    text-decoration: none;
+}
+
+.carzo-home .user-service-section {
+    min-height: 125px;
+    padding: 17px 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(35px, 8vw, 115px);
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.carzo-home .user-service-item {
+    min-width: 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.carzo-home .service-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f6eedf;
+    border: 1px solid #e5c98f;
+    color: #886326;
+    font-size: 30px;
+    transition: .25s;
+}
+
+.carzo-home .user-service-item:hover {
+    color: #9b702a;
+    transform: translateY(-4px);
+}
+
+.carzo-home .user-service-item:hover .service-icon {
+    background: #d6ad60;
+    color: #111;
+}
+
+.carzo-home .home-hero {
+    min-height: 390px;
+    padding: 55px 8%;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, rgba(5,9,15,.94) 0%,
+        rgba(5,9,15,.76) 48%, rgba(5,9,15,.15) 100%),
+        url("../images/car-bg.png") center 55% / cover no-repeat;
+}
+
+.carzo-home .hero-content {
+    max-width: 620px;
+    color: #fff;
+}
+
+.carzo-home .hero-tagline,
+.carzo-home .section-eyebrow {
+    color: #d6ad60;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.carzo-home .hero-content h1 {
+    margin: 13px 0;
+    color: #f3d18a;
+    font-family: Georgia, serif;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.12;
+}
+
+.carzo-home .hero-content > p:not(.hero-tagline) {
+    max-width: 500px;
+    color: #e2e4e8;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.carzo-home .hero-button {
+    display: inline-block;
+    margin-top: 17px;
+    padding: 14px 25px;
+    border-radius: 7px;
+    background: linear-gradient(135deg,#f0d397,#c89536);
+    color: #111;
+    font-weight: 800;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.carzo-home .hero-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 18px rgba(214, 168, 75, 0.3);
+    box-shadow: 0 8px 25px rgba(214,173,96,.25);
+}
+
+.carzo-home .home-main {
+    width: min(1250px, 90%);
+    margin: 0 auto;
+}
+
+.carzo-home .explore-section {
+    padding: 65px 0 75px;
+}
+
+.carzo-home .home-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 27px;
+}
+
+.carzo-home .home-section-heading h2 {
+    margin: 7px 0;
+    color: #20242a;
+    font-size: 29px;
+    font-family: Georgia, serif;
+}
+
+.carzo-home .home-section-heading .section-eyebrow {
+    margin: 0;
+    color: #9a712e;
+}
+
+.carzo-home .explore-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 22px;
+}
+
+.carzo-home .explore-card {
+    min-height: 145px;
+    padding: 23px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #e7e0d2;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.04);
+    color: #222;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.carzo-home .explore-card:hover {
+    transform: translateY(-5px);
+    border-color: #d6ad60;
+    box-shadow: 0 12px 28px rgba(0,0,0,.09);
+}
+
+.carzo-home .explore-icon {
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #f6eedf;
+    font-size: 28px;
+}
+
+.carzo-home .explore-card h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+    color: #20242a;
+}
+
+.carzo-home .explore-card p {
+    margin: 0;
+    color: #747b83;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.carzo-home .service-arrow {
+    margin-left: auto;
+    color: #a47b35;
+    font-size: 23px;
+}
+
+.carzo-home .popular-section {
+    padding: 48px 0 75px;
+    border-top: 1px solid #e2ded6;
+}
+
+.carzo-home .section-description {
+    margin: 5px 0;
+    color: #747b83;
+    font-size: 14px;
+}
+
+.carzo-home .view-all-link {
+    color: #936a29;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.carzo-home .view-all-link:hover {
+    color: #171b20;
+}
+
+.carzo-home .popular-cars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 22px;
+}
+
+.carzo-home .home-car-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 12px;
+    transition: .25s;
+}
+
+.carzo-home .home-car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.09);
+    border-color: #d6ad60;
+}
+
+.carzo-home .home-car-image-box {
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #f0f1f2;
+}
+
+.carzo-home .home-car-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform .35s;
+}
+
+.carzo-home .home-car-card:hover .home-car-image-box img {
+    transform: scale(1.06);
+}
+
+.carzo-home .home-car-details {
+    padding: 17px;
+}
+
+.carzo-home .home-car-brand {
+    margin: 0 0 5px;
+    color: #9b793f;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.carzo-home .home-car-details h3 {
+    margin: 0 0 6px;
+    color: #24282d;
+    font-size: 18px;
+}
+
+.carzo-home .home-car-category {
+    margin: 0 0 12px;
+    color: #7a8087;
+    font-size: 12px;
+}
+
+.carzo-home .home-car-price {
+    margin: 0 0 14px;
+    color: #956d2c;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.carzo-home .home-car-button {
+    display: block;
+    padding: 11px;
+    border: 1px solid #d6ad60;
+    border-radius: 7px;
+    color: #8b6428;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    transition: .2s;
+}
+
+.carzo-home .home-car-button:hover {
+    background: #d6ad60;
+    color: #111;
+}
+
+.carzo-home .cars-loading,
+.carzo-home .cars-empty {
+    grid-column: 1 / -1;
+    padding: 35px;
+    background: #fff;
+    border-radius: 10px;
+    color: #777;
+    text-align: center;
+}
+
+.carzo-home .home-footer {
+    padding: 38px 20px;
+    background: #10151d;
+    color: #d6d9dd;
+    text-align: center;
+}
+
+.carzo-home .home-footer h2 {
+    margin: 0;
+    color: #fff;
+    letter-spacing: 3px;
+}
+
+.carzo-home .home-footer p {
+    font-size: 13px;
+}
+
+.carzo-home .footer-copy {
+    margin-top: 20px;
+    color: #9299a3;
+}
+
+@media(max-width:950px) {
+    .carzo-home .popular-cars-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .carzo-home .explore-service-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:700px) {
+    .carzo-home .home-navbar {
+        flex-wrap: wrap;
+        padding: 15px 5%;
+    }
+
+    .carzo-home .home-search {
+        order: 3;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .carzo-home .home-nav-right {
+        margin-left: auto;
+    }
+
+    .carzo-home .welcome-user {
+        display: none;
+    }
+
+    .carzo-home .user-service-section {
+        justify-content: flex-start;
+        gap: 24px;
+        overflow-x: auto;
+        padding: 17px 20px;
+    }
+
+    .carzo-home .user-service-item {
+        flex-shrink: 0;
+    }
+
+    .carzo-home .home-hero {
+        min-height: 350px;
+        padding: 40px 7%;
+        background-position: 60% center;
+    }
+
+    .carzo-home .home-main {
+        width: 90%;
+    }
+
+    .carzo-home .explore-section {
+        padding: 45px 0;
+    }
+
+    .carzo-home .popular-section {
+        padding: 35px 0 50px;
+    }
+
+    .carzo-home .home-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media(max-width:450px) {
+    .carzo-home .popular-cars-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carzo-home .home-car-image-box {
+        height: 210px;
+    }
+
+    .carzo-home .home-hero h1 {
+        font-size: 38px;
+    }
 }
