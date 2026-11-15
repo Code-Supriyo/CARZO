@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARZO - Home</title>
+    <link rel="stylesheet" href="css/carzo.css?v=2">
+...
+<script src="Home.js?v=2"></script>
+</head>
+
+<body class="carzo-home">
+
+    <header class="home-navbar">
+        <a href="Home.html" class="home-logo">CAR<span>ZO</span></a>
+
+        <form class="home-search" id="homeSearchForm">
+            <input type="search"
+                   id="carSearch"
+                   placeholder="Search for your dream car...">
+            <button type="submit" aria-label="Search">⌕</button>
+        </form>
+
+        <div class="home-nav-right">
+            <div class="welcome-user">
+                <span class="user-avatar">♙</span>
+                <span>Welcome, <strong id="username">User</strong></span>
+            </div>
+
+            <form action="Logout" method="post" class="logout-form">
+                <button type="submit" class="home-logout">Logout</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- USER SERVICES ICON ROW -->
+    <section class="user-service-section">
+        <a href="Profile" class="user-service-item">
+            <div class="service-icon">♙</div>
+            <span>My Profile</span>
+        </a>
+
+        <a href="ChangePassword.html" class="user-service-item">
+            <div class="service-icon">♧</div>
+            <span>Change Password</span>
+        </a>
+
+        <a href="Wishlist.html" class="user-service-item">
+            <div class="service-icon">♡</div>
+            <span>My Wishlist</span>
+        </a>
+
+        <a href="PurchaseHistory.html" class="user-service-item">
+            <div class="service-icon">▤</div>
+            <span>Purchase History</span>
+        </a>
+    </section>
+
+    <!-- HERO BANNER -->
+    <section class="home-hero">
+        <div class="hero-content">
+            <p class="hero-tagline">WELCOME TO CARZO</p>
+            <h1>Where Elegance<br>Meets the Road.</h1>
+            <p>
+                Discover your dream car. Explore premium collections,
+                compare models and find the perfect drive.
+            </p>
+            <a href="CarCategories.html" class="hero-button">
+                Explore Cars →
+            </a>
+        </div>
+    </section>
+
+    <!-- EXPLORE SERVICES & POPULAR CARS -->
+    <main class="home-main">
+        <section class="explore-section">
+            <div class="home-section-heading">
+                <div>
+                    <p class="section-eyebrow">DISCOVER CARZO</p>
+                    <h2>Explore Our Services</h2>
+                </div>
+            </div>
+
+            <div class="explore-service-grid">
+                <a href="CarCategories.html" class="explore-card">
+                    <div class="explore-icon">🚘</div>
+                    <div>
+                        <h3>Car Categories</h3>
+                        <p>Explore cars from different brands and categories.</p>
+                    </div>
+                    <span class="service-arrow">→</span>
+                </a>
+
+                <a href="CarComparison.html" class="explore-card">
+                    <div class="explore-icon">⚖</div>
+                    <div>
+                        <h3>Compare Cars</h3>
+                        <p>Compare features, prices and specifications.</p>
+                    </div>
+                    <span class="service-arrow">→</span>
+                </a>
+
+                <a href="CarMaintenance.html" class="explore-card">
+                    <div class="explore-icon">🔧</div>
+                    <div>
+                        <h3>Car Maintenance</h3>
+                        <p>Explore maintenance and care services.</p>
+                    </div>
+                    <span class="service-arrow">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- POPULAR CARS FROM DATABASE -->
+        <section class="popular-section">
+            <div class="home-section-heading">
+                <div>
+                    <p class="section-eyebrow">HANDPICKED FOR YOU</p>
+                    <h2>Explore Popular Cars</h2>
+                    <p class="section-description">
+                        Discover some of the cars available in CARZO.
+                    </p>
+                </div>
+
+                <a href="CarCategories.html" class="view-all-link">
+                    View All Cars →
+                </a>
+            </div>
+
+            <div id="popularCarsGrid" class="popular-cars-grid">
+                <p class="cars-loading">Loading cars...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="home-footer">
+        <h2>CAR<span>ZO</span></h2>
+        <p>Where Elegance Meets the Road.</p>
+        <p class="footer-copy">© 2026 CARZO. All Rights Reserved.</p>
+    </footer>
+
+    <script src="home.js"></script>
+</body>
+</html>

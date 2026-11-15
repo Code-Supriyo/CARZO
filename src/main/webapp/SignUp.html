@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARZO - Create Account</title>
+
+ <link rel="stylesheet" href="css/carzo.css?v=2"></head>
+
+<body>
+
+    <div class="form-container">
+
+        <h2>CARZO</h2>
+        <p class="form-description">Where Elegance Meets the Road</p>
+
+        <h2>Create Your Account</h2>
+        <p class="form-description">Join CARZO and discover your dream car.</p>
+
+        <form method="post" action="SignUp">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="n1" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email ID</label>
+                <input type="email" name="n2" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Contact No</label>
+                <input type="text" name="n3" placeholder="Enter contact number" required>
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <textarea name="n4" rows="3" placeholder="Enter your address" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="n5"
+                           placeholder="Create password" required>
+                    <button type="button"
+                        onclick="togglePassword('password', this)">👁</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="n6" id="confirmPassword"
+                       placeholder="Confirm your password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Security Question</label>
+                <select name="n7" required>
+                    <option value="">Select Security Question</option>
+                    <option value="Dream Car">Dream Car</option>
+                    <option value="Favorite Color">Favorite Color</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Answer</label>
+                <input type="text" name="n8" placeholder="Enter your answer" required>
+            </div>
+
+            <div class="form-group">
+                <label>Do you have any car?</label>
+                <select name="n9" id="carStatus"
+                        onchange="showCarDetails()" required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="carDetails" style="display:none;">
+                <label>Car Name / Model</label>
+                <input type="text" name="n10"
+                       placeholder="Enter your car name or model">
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" name="terms" required>
+                <label style="display:inline;">
+                    I agree to the Terms and Conditions
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Create Account
+            </button>
+
+            <button type="reset" class="btn btn-outline">
+                Reset
+            </button>
+
+        </form>
+
+        <div class="form-footer">
+            Already have an account?
+            <a href="Login.html">Login here</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showCarDetails() {
+            var carStatus = document.getElementById("carStatus").value;
+            var carDetails = document.getElementById("carDetails");
+
+            if (carStatus == "Yes") {
+                carDetails.style.display = "block";
+            } else {
+                carDetails.style.display = "none";
+            }
+        }
+
+        function togglePassword(id, button) {
+            const password = document.getElementById(id);
+
+            if (password.type === "password") {
+                password.type = "text";
+                button.textContent = "🙈";
+            } else {
+                password.type = "password";
+                button.textContent = "👁";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
