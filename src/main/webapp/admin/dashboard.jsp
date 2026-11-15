@@ -68,7 +68,7 @@
 
         <h4>ACCOUNT</h4>
 
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin/profile">
             ♙ Admin Profile
         </a>
 
