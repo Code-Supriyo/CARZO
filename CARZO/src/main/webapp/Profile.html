@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CARZO - My Profile</title>
+ <link rel="stylesheet" href="css/carzo.css?v=2"></head>
+
+<body>
+    <div class="profile-container">
+        <h1>VAHAN - My Profile</h1>
+        <h2 class="profile-welcome">
+            Welcome <span id="username"></span>
+        </h2>
+
+        <hr>
+        <!-- Personal Information -->
+        <section class="personal-info">
+
+            <h3>Personal Information</h3>
+
+            <div class="profile-details">
+
+                <p>
+                    <b>Name:</b>
+                    <span id="name"></span>
+                </p>
+
+                <p>
+                    <b>Email ID:</b>
+                    <span id="email"></span>
+                </p>
+
+                <p>
+                    <b>Contact No:</b>
+                    <span id="contact"></span>
+                </p>
+
+                <p>
+                    <b>Address:</b>
+                    <span id="address"></span>
+                </p>
+
+                <p>
+                    <b>Do you have any car?</b>
+                    <span id="carStatus"></span>
+                </p>
+
+                <p>
+                    <b>Car Name / Model:</b>
+                    <span id="carName"></span>
+                </p>
+            </div>
+        </section>
+        <hr>
+
+        <!-- Account Options -->
+        <section class="account-options">
+            <h3>Account Options</h3>
+            <div class="option-buttons">
+            	<a href="wishlist.html">My Wishlist</a>
+                <a href="PurchaseHistory">Purchase history</a>
+                <a href="EditProfile.html">Edit Profile</a>
+                <a href="ChangePassword.html">Change Password</a>
+                <a href="Home">Back to Home</a>
+                <a href="Logout">Logout</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Existing JavaScript - unchanged -->
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById("username").textContent =
+            params.get("name") || "";
+
+        document.getElementById("name").textContent =
+            params.get("name") || "";
+
+        document.getElementById("email").textContent =
+            params.get("email") || "";
+
+        document.getElementById("contact").textContent =
+            params.get("contact") || "";
+
+        document.getElementById("address").textContent =
+            params.get("address") || "";
+
+        document.getElementById("carStatus").textContent =
+            params.get("carStatus") || "";
+
+        document.getElementById("carName").textContent =
+            params.get("carName") || "";
+
+    </script>
+
+</body>
+</html>

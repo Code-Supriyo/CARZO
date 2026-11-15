@@ -1,5 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
+	const params = new URLSearchParams(window.location.search);
+	const bookingStatus = params.get("booking");
+
+	if (bookingStatus === "success") {
+	    alert("Car booking done! Feel free to review your details through purchase history.");
+	} else if (bookingStatus === "already-exists") {
+	    alert("You have already booked this car. You can review your booking details through Purchase History.");
+	}
+
+	if (bookingStatus) {
+	    params.delete("booking");
+
+	    const newUrl = params.toString()
+	        ? `${window.location.pathname}?${params.toString()}`
+	        : window.location.pathname;
+
+	    window.history.replaceState({}, document.title, newUrl);
+	}
+
     const carId = params.get("id");
 	setupSidebar();
     if (!carId || !/^\d+$/.test(carId)) {
@@ -9,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadCarDetails(carId);
     setupNavigation();
-    setupCompareButton();
+    setupBuyNowButton(carId);
 });
 
 function setupSidebar() {
@@ -194,12 +212,14 @@ function displaySimilarCars(cars) {
 
 function createSimilarCarCard(car) {
     const card = document.createElement("article");
-	card.dataset.carId = car.carId ?? car.id;
+    card.dataset.carId = car.carId ?? car.id;
     card.className = "car-card";
+
     const imageUrl = car.imageUrl || car.image || "";
     const carName = car.carName || car.name || "Car";
     const minPrice = formatPrice(car.minPrice);
     const maxPrice = formatPrice(car.maxPrice);
+
     let price = "Price not available";
 
     if (minPrice && maxPrice) {
@@ -239,21 +259,7 @@ function createSimilarCarCard(car) {
             <p>${escapeHtml(price)}</p>
 
             <button type="button" class="compare-button">
-                <span class="compare-content">
-                    <img
-                        src="plus-circle-svgrepo-com.svg"
-                        alt="Add"
-                        class="compare-plus"
-                    >
-
-                    <span class="compare-text">Add to Compare</span>
-
-                    <img
-                        src="tick-circle-svgrepo-com.svg"
-                        alt="Added"
-                        class="compare-tick"
-                    >
-                </span>
+                Buy Now
             </button>
         </div>
     `;
@@ -264,21 +270,23 @@ function createSimilarCarCard(car) {
         image.style.display = "none";
     });
 
-    const compareButton = card.querySelector(".compare-button");
+    card.addEventListener("click", (event) => {
+        if (event.target.closest(".wishlist-button, .compare-button")) {
+            return;
+        }
 
-    compareButton.addEventListener("click", event => {
-        event.stopPropagation();
-        compareButton.classList.toggle("added");
+        window.location.href =
+            `car-details.html?id=${encodeURIComponent(card.dataset.carId)}`;
     });
+	
+	const buyNowButton = card.querySelector(".compare-button");
 
-	card.addEventListener("click", (event) => {
-	    if (event.target.closest(".wishlist-button, .compare-button")) {
-	        return;
-	    }
-
-	    window.location.href = `car-details.html?id=${car.carId}`;
+	buyNowButton.addEventListener("click", event => {
+	    event.stopPropagation();
+	    window.location.href =
+	        `confirm-purchase.html?id=${encodeURIComponent(card.dataset.carId)}`;
 	});
-
+	
     card.style.cursor = "pointer";
     return card;
 }
@@ -376,13 +384,13 @@ function setupNavigation() {
     });
 }
 
-function setupCompareButton() {
-    const button = document.getElementById("compareBtn");
+function setupBuyNowButton(carId) {
+    const button = document.getElementById("buyNowBtn");
 
     if (!button) return;
 
     button.addEventListener("click", () => {
-        button.classList.toggle("added");
+        window.location.href =`confirm-purchase.html?id=${encodeURIComponent(carId)}`;
     });
 }
 

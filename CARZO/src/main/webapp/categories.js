@@ -41,58 +41,45 @@ document.addEventListener("DOMContentLoaded", function() {
             " - ₹" + Number(max).toFixed(2) + " Lakh";
     }
 
-    function createCarCard(car) {
+	function createCarCard(car) {
+	    const article = document.createElement("article");
+	    article.className = "car-card";
+	    article.dataset.carId = car.carId;
+	    const imageBox = document.createElement("div");
+	    imageBox.className = "car-image";
+	    const image = document.createElement("img");
+	    image.src = assetPath(car.imageUrl, "cars");
+	    image.alt = car.carName || "Car";
+	    image.onerror = function() {this.style.visibility = "hidden";};
 
-        const article = document.createElement("article");
-        article.className = "car-card";
-		article.dataset.carId = car.carId;
-        const imageBox = document.createElement("div");
-        imageBox.className = "car-image";
+	    const wishlist = document.createElement("button");
+	    wishlist.type = "button";
+	    wishlist.className = "wishlist-button";
+	    wishlist.setAttribute("aria-label", "Add to wishlist");
 
-        const image = document.createElement("img");
-        image.src = assetPath(car.imageUrl, "cars");
-        image.alt = car.carName || "Car";
+	    wishlist.innerHTML =
+	        '<img src="heart-svgrepo-com.svg" alt="Wishlist" class="heart-outline">' +
+	        '<img src="heart-fill-svgrepo-com.svg" alt="Wishlisted" class="heart-filled">';
 
-        image.onerror = function() {
-            this.style.visibility = "hidden";
-        };
+	    imageBox.append(image, wishlist);
 
-        const wishlist = document.createElement("button");
-        wishlist.type = "button";
-        wishlist.className = "wishlist-button";
-        wishlist.setAttribute("aria-label", "Add to wishlist");
+	    const details = document.createElement("div");
+	    details.className = "car-details";
 
-        wishlist.innerHTML =
-            '<img src="heart-svgrepo-com.svg" alt="Wishlist" class="heart-outline">' +
-            '<img src="heart-fill-svgrepo-com.svg" alt="Wishlisted" class="heart-filled">';
+	    const name = document.createElement("h3");
+	    name.textContent = car.carName || "Unnamed car";
 
-        imageBox.append(image, wishlist);
+	    const price = document.createElement("p");
+	    price.textContent = formatPrice(car);
 
-        const details = document.createElement("div");
-        details.className = "car-details";
-
-        const name = document.createElement("h3");
-        name.textContent = car.carName || "Unnamed car";
-
-        const price = document.createElement("p");
-        price.textContent = formatPrice(car);
-
-        const compare = document.createElement("button");
-        compare.type = "button";
-        compare.className = "compare-button";
-
-        compare.innerHTML =
-            '<span class="compare-content">' +
-            '<img src="plus-circle-svgrepo-com.svg" alt="Add" class="compare-plus">' +
-            '<span class="compare-text">Add to Compare</span>' +
-            '<img src="tick-circle-svgrepo-com.svg" alt="Added" class="compare-tick">' +
-            '</span>';
-
-        details.append(name, price, compare);
-        article.append(imageBox, details);
-
-        return article;
-    }
+	    const buyNow = document.createElement("button");
+	    buyNow.type = "button";
+	    buyNow.className = "compare-button";
+	    buyNow.textContent = "Buy Now";
+	    details.append(name, price, buyNow);
+	    article.append(imageBox, details);
+	    return article;
+	}
 
     function moveIndicator(tab, animate) {
 
@@ -579,16 +566,23 @@ document.addEventListener("DOMContentLoaded", function() {
 	    window.location.href =
 	        "car-details.html?id=" + encodeURIComponent(card.dataset.carId);
 	});
-	
+
 	document.addEventListener("click", function(event) {
-	    const compare = event.target.closest(".compare-button");
+	    const buyNow = event.target.closest(".compare-button");
 
-	    if (compare) {
-	        event.stopPropagation();
-	        compare.classList.toggle("added");
-	    }
+	    if (!buyNow) return;
+
+	    event.preventDefault();
+	    event.stopPropagation();
+
+	    const card = buyNow.closest(".car-card");
+
+	    if (!card || !card.dataset.carId) return;
+
+	    window.location.href =
+	        `confirm-purchase.html?id=${encodeURIComponent(card.dataset.carId)}`;
 	});
-
+	
     const sidebarToggle = document.getElementById("sidebarToggle");
     const sidebar = document.getElementById("sidebar");
     const sidebarClose = document.getElementById("sidebarClose");

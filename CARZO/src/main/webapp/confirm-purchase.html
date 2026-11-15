@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirm Purchase | CARZO</title>
+<link rel="stylesheet" href="confirm-purchase.css">
+</head>
+<body>
+
+	<header class="header">
+		<a href="home.html" class="logo">CARZO</a>
+		<nav>
+			<a href="home.html">Home</a> <a href="categories.html">Car
+				Categories</a>
+		</nav>
+	</header>
+
+	<main class="purchase-container">
+		<h1>Confirm Your Purchase</h1>
+		<p class="subtitle">Review your car details before confirming your
+			booking.</p>
+
+		<section class="purchase-card">
+			<div class="car-image">
+				<img id="carImage" src="" alt="Selected car">
+			</div>
+
+			<div class="car-info">
+				<h2 id="carName">Loading car details...</h2>
+				<p class="brand" id="brandName"></p>
+
+				<div class="price-section">
+					<span>Booking Price</span> <strong id="carPrice">—</strong> <small>Minimum
+						listed price</small>
+				</div>
+			</div>
+		</section>
+
+		<div class="notice">Please review the details carefully.
+			Confirming will create a purchase booking.
+		</div>
+
+
+		<form action="SavePurchase" method="POST" id="purchaseForm">
+
+			<input type="hidden" name="carId" id="carId">
+
+			<h3 class="form-section-title">Customer Details</h3>
+
+			<div class="form-grid">
+				<div class="form-field">
+					<label for="customerName">Name</label> <input type="text"
+						id="customerName" readonly>
+				</div>
+
+				<div class="form-field">
+					<label for="customerEmail">Email</label> <input type="email"
+						id="customerEmail" readonly>
+				</div>
+
+				<div class="form-field">
+					<label for="customerContact">Contact Number</label> <input
+						type="text" id="customerContact" readonly>
+				</div>
+
+				<div class="form-field">
+					<label for="customerAddress">Address</label>
+					<textarea id="customerAddress" rows="2" readonly></textarea>
+				</div>
+			</div>
+
+			<h3 class="form-section-title">Preferred Car Preferences</h3>
+
+			<div class="form-grid">
+				<div class="form-field">
+					<label for="preferredColour">Preferred Car Colour</label> <select
+						id="preferredColour" name="preferredColour" required>
+						<option value="">Select a colour</option>
+					</select>
+				</div>
+
+				<div class="form-field">
+					<label for="preferredFuelType">Preferred Fuel Type</label> <select
+						id="preferredFuelType" name="preferredFuelType" required>
+						<option value="">Select a fuel type</option>
+					</select>
+				</div>
+			</div>
+
+			<h3 class="form-section-title">Showroom Visit Details</h3>
+
+			<div class="form-grid">
+				<div class="form-field">
+					<label for="preferredVisitDate">Preferred Showroom Visit
+						Date</label> <input type="date" id="preferredVisitDate"
+						name="preferredVisitDate" required>
+				</div>
+
+				<div class="form-field">
+					<label for="preferredVisitTime">Preferred Visit Time</label> <select
+						id="preferredVisitTime" name="preferredVisitTime" required>
+						<option value="">Select a time slot</option>
+						<option value="10 AM - 12 PM">10 AM - 12 PM</option>
+						<option value="12 PM - 2 PM">12 PM - 2 PM</option>
+						<option value="2 PM - 4 PM">2 PM - 4 PM</option>
+						<option value="4 PM - 6 PM">4 PM - 6 PM</option>
+					</select>
+				</div>
+			</div>
+
+			<button type="submit" id="confirmButton" disabled>Confirm
+				Booking</button>
+
+		</form>
+
+
+		<a href="#" id="backLink" class="back-link">Back to Car Details</a>
+
+		<p id="errorMessage" class="error-message"></p>
+	</main>
+
+	<script src="confirm-purchase.js"></script>
+</body>
+</html>
