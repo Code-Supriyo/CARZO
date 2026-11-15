@@ -51,7 +51,7 @@
             ▣ Dashboard
         </a>
 
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin/users">
             ♙ User Management
         </a>
 
