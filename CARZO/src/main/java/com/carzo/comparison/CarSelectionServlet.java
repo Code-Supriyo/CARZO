@@ -1,103 +1,48 @@
+
 package com.carzo.comparison;
 
-import com.carzo.dao.CarDAO;
-import com.carzo.model.Car;
+import com.carzo.dao.CarDAO2;
+import com.carzo.util.JsonUtil;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.*;
+import jakarta.servlet.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/CarSelectionServlet")
 public class CarSelectionServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-
-    private CarDAO carDAO;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private CarDAO2 dao;
 
     @Override
-    public void init() throws ServletException {
-        carDAO = new CarDAO();
+    public void init() {
+        dao = new CarDAO2();
     }
 
     @Override
-    protected void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
             throws ServletException, IOException {
 
-        String search = request.getParameter("search");
-        String category = request.getParameter("category");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
         try {
+            String search = request.getParameter("search");
+            String category = request.getParameter("category");
 
-            List<Car> carList;
-
-            if (search != null && !search.trim().isEmpty()) {
-
-                carList = carDAO.searchCars(search);
-
-            } else if (category != null &&
-                       !category.trim().isEmpty()) {
-
-                try {
-
-                    int categoryId =
-                            Integer.parseInt(category);
-
-                    carList =
-                            carDAO.getCarsByCategory(categoryId);
-
-                } catch (NumberFormatException e) {
-
-                    carList =
-                            carDAO.getAllCars();
-                }
-
-            } else {
-
-                carList =
-                        carDAO.getAllCars();
-            }
-
-            request.setAttribute(
-                    "carList",
-                    carList
-            );
-
-            request.getRequestDispatcher(
-                    "/comparison/carSelection.jsp"
-            ).forward(request, response);
+            response.getWriter().write(
+                JsonUtil.carList(dao.searchCars(search, category)));
 
         } catch (Exception e) {
-
-            request.setAttribute(
-                    "errorMessage",
-                    "Unable to load car data: "
-                    + e.getMessage()
-            );
-
-            request.setAttribute(
-                    "carList",
-                    java.util.Collections.emptyList()
-            );
-
-            request.getRequestDispatcher(
-                    "/comparison/carSelection.jsp"
-            ).forward(request, response);
+            response.setStatus(500);
+            response.getWriter().write(
+                JsonUtil.message(false, "Unable to load cars."));
+            getServletContext().log("Car selection error", e);
         }
-    }
-
-    @Override
-    protected void doPost(
-            HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
-
-        doGet(request, response);
     }
 }

@@ -2,184 +2,92 @@
 package com.carzo.comparison;
 
 import com.carzo.dao.CarComparisonDAO;
+import com.carzo.model.Car;
 import com.carzo.model.ComparisonResult;
+import com.carzo.util.JsonUtil;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
+import jakarta.servlet.http.*;
+import jakarta.servlet.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @WebServlet("/CompareCarsServlet")
 public class CompareCarsServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-
-    private CarComparisonDAO comparisonDAO;
+    private CarComparisonDAO dao;
 
     @Override
-    public void init() throws ServletException {
-        comparisonDAO = new CarComparisonDAO();
+    public void init() {
+        dao = new CarComparisonDAO();
     }
 
-    // GET: Return to car selection page
     @Override
-    protected void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.sendRedirect(
-                request.getContextPath()
-                + "/CarSelectionServlet"
-        );
-    }
-
-    // POST: Compare selected cars
-    @Override
-    protected void doPost(
-            HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String[] carIds =
-                request.getParameterValues("carIds");
-
-        if (carIds == null || carIds.length < 2) {
-
-            request.setAttribute(
-                    "errorMessage",
-                    "Please select at least 2 cars."
-            );
-
-            request.getRequestDispatcher(
-                    "/comparison/carSelection.jsp"
-            ).forward(request, response);
-
-            return;
-        }
-
-        if (carIds.length > 4) {
-
-            request.setAttribute(
-                    "errorMessage",
-                    "You can compare maximum 4 cars."
-            );
-
-            request.getRequestDispatcher(
-                    "/comparison/carSelection.jsp"
-            ).forward(request, response);
-
-            return;
-        }
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
         try {
+            String[] values = request.getParameterValues("carIds");
 
-            List<Integer> selectedCarIds =
-                    new ArrayList<>();
-
-            for (String carId : carIds) {
-
-                int id = Integer.parseInt(carId);
-
-                if (!selectedCarIds.contains(id)) {
-                    selectedCarIds.add(id);
-                }
-            }
-
-            if (selectedCarIds.size() < 2 ||
-                selectedCarIds.size() > 4) {
-
-                request.setAttribute(
-                        "errorMessage",
-                        "Please select between 2 and 4 different cars."
-                );
-
-                request.getRequestDispatcher(
-                        "/comparison/carSelection.jsp"
-                ).forward(request, response);
-
+            if (values == null || values.length < 2 || values.length > 4) {
+                response.setStatus(400);
+                response.getWriter().write(
+                    JsonUtil.message(false,
+                        "Select between 2 and 4 cars."));
                 return;
             }
 
-            // Get comparison result from DAO
-            ComparisonResult result =
-                    comparisonDAO.compareCars(
-                            selectedCarIds
-                    );
+            List<Integer> ids = new ArrayList<>();
 
-            if (result == null ||
-                result.getCars() == null ||
-                result.getCars().isEmpty()) {
-
-                request.setAttribute(
-                        "errorMessage",
-                        "No comparison data found."
-                );
-
-                request.getRequestDispatcher(
-                        "/comparison/carSelection.jsp"
-                ).forward(request, response);
-
-                return;
+            for (String value : values) {
+                ids.add(Integer.parseInt(value));
             }
 
-            // Store result in session
-            HttpSession session =
-                    request.getSession();
+            List<Car> cars = dao.getCarsForComparison(ids);
+            ComparisonResult result = dao.compareCars(cars);
 
-            session.setAttribute(
-                    "comparisonResult",
-                    result
-            );
+            HttpSession session = request.getSession();
 
-            session.setAttribute(
-                    "compareCarIds",
-                    selectedCarIds
-            );
+            // Always store IDs, never Car objects, in compareList.
+            session.setAttribute("compareList", ids);
+            session.setAttribute("comparisonResult", result);
 
-            // Also pass result to JSP
-            request.setAttribute(
-                    "comparisonResult",
-                    result
-            );
+            response.getWriter().write(JsonUtil.comparison(result));
 
-            // Display comparison page
-            request.getRequestDispatcher(
-                    "/comparison/compareCars.jsp"
-            ).forward(request, response);
-
+        } catch (Exception e) {
+            response.setStatus(400);
+            response.getWriter().write(
+                JsonUtil.message(false,
+                    "Unable to compare selected cars."));
+            getServletContext().log("Comparison error", e);
         }
-        catch (NumberFormatException e) {
+    }
 
-            request.setAttribute(
-                    "errorMessage",
-                    "Invalid car ID."
-            );
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+            throws ServletException, IOException {
 
-            request.getRequestDispatcher(
-                    "/comparison/carSelection.jsp"
-            ).forward(request, response);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
+        HttpSession session = request.getSession(false);
+
+        ComparisonResult result = session == null ? null :
+            (ComparisonResult) session.getAttribute("comparisonResult");
+
+        if (result == null) {
+            response.setStatus(404);
+            response.getWriter().write(
+                JsonUtil.message(false,
+                    "No comparison found. Select cars first."));
+            return;
         }
-        catch (Exception e) {
 
-            e.printStackTrace();
-
-            request.setAttribute(
-                    "errorMessage",
-                    "Unable to compare cars: "
-                    + e.getMessage()
-            );
-
-            request.getRequestDispatcher(
-                    "/comparison/carSelection.jsp"
-            ).forward(request, response);
-        }
+        response.getWriter().write(JsonUtil.comparison(result));
     }
 }

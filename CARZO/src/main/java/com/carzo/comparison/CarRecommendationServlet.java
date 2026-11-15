@@ -1,241 +1,69 @@
+
 package com.carzo.comparison;
 
-import com.carzo.dao.CarDAO;
+import com.carzo.dao.CarDAO2;
 import com.carzo.model.Car;
+import com.carzo.util.JsonUtil;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.*;
+import jakarta.servlet.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @WebServlet("/CarRecommendationServlet")
 public class CarRecommendationServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-
-    private CarDAO carDAO;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private CarDAO2 dao;
 
     @Override
-    public void init() throws ServletException {
-        carDAO = new CarDAO();
+    public void init() {
+        dao = new CarDAO2();
     }
 
     @Override
     protected void doGet(HttpServletRequest request,
-                          HttpServletResponse response)
+                         HttpServletResponse response)
             throws ServletException, IOException {
 
-        processRecommendation(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request,
-                           HttpServletResponse response)
-            throws ServletException, IOException {
-
-        processRecommendation(request, response);
-    }
-
-    private void processRecommendation(HttpServletRequest request,
-                                       HttpServletResponse response)
-            throws ServletException, IOException {
-
-        List<Car> recommendedCars = new ArrayList<>();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
         try {
+            String category = request.getParameter("category");
+            String maxPriceText = request.getParameter("maxPrice");
+            String mileageText = request.getParameter("mileage");
 
-            String categoryParam =
-                    request.getParameter("category");
+            double maxPrice = maxPriceText == null ||
+                maxPriceText.isBlank() ? Double.MAX_VALUE :
+                Double.parseDouble(maxPriceText);
 
-            String maxPriceParam =
-                    request.getParameter("maxPrice");
+            double mileage = mileageText == null ||
+                mileageText.isBlank() ? 0 :
+                Double.parseDouble(mileageText);
 
-            String mileageParam =
-                    request.getParameter("mileage");
+            List<Car> cars = dao.searchCars(null, category);
+            List<Car> recommended = new ArrayList<>();
 
-            Integer categoryId = null;
-            Double maxPrice = null;
-            Double minimumMileage = null;
-
-            /*
-             * Category
-             */
-            if (categoryParam != null &&
-                !categoryParam.trim().isEmpty()) {
-
-                try {
-
-                    categoryId =
-                            Integer.parseInt(categoryParam.trim());
-
-                    if (categoryId < 1 ||
-                        categoryId > 6) {
-
-                        categoryId = null;
-                    }
-
-                } catch (NumberFormatException e) {
-
-                    categoryId = null;
+            for (Car car : cars) {
+                if (car.getMinPrice() <= maxPrice &&
+                    car.getMileage() >= mileage) {
+                    recommended.add(car);
                 }
             }
 
-            /*
-             * Maximum price
-             */
-            if (maxPriceParam != null &&
-                !maxPriceParam.trim().isEmpty()) {
-
-                try {
-
-                    maxPrice =
-                            Double.parseDouble(
-                                    maxPriceParam.trim());
-
-                    if (maxPrice < 0) {
-                        maxPrice = null;
-                    }
-
-                } catch (NumberFormatException e) {
-
-                    maxPrice = null;
-                }
-            }
-
-            /*
-             * Minimum mileage
-             */
-            if (mileageParam != null &&
-                !mileageParam.trim().isEmpty()) {
-
-                try {
-
-                    minimumMileage =
-                            Double.parseDouble(
-                                    mileageParam.trim());
-
-                    if (minimumMileage < 0) {
-                        minimumMileage = null;
-                    }
-
-                } catch (NumberFormatException e) {
-
-                    minimumMileage = null;
-                }
-            }
-
-            /*
-             * Get all cars from Oracle database.
-             */
-            List<Car> allCars = carDAO.getAllCars();
-
-            /*
-             * Apply recommendation filters.
-             */
-            for (Car car : allCars) {
-
-                boolean matches = true;
-
-                /*
-                 * Category filter
-                 */
-                if (categoryId != null &&
-                    car.getCategoryId() != categoryId) {
-
-                    matches = false;
-                }
-
-                /*
-                 * Maximum price filter.
-                 *
-                 * The car is considered suitable when
-                 * its minimum price is within the user's
-                 * selected budget.
-                 */
-                if (matches &&
-                    maxPrice != null &&
-                    car.getMinPrice() > maxPrice) {
-
-                    matches = false;
-                }
-
-                /*
-                 * Mileage filter
-                 */
-                if (matches &&
-                    minimumMileage != null &&
-                    car.getMileage() < minimumMileage) {
-
-                    matches = false;
-                }
-
-                if (matches) {
-                    recommendedCars.add(car);
-                }
-            }
-
-            /*
-             * If no filters are selected,
-             * show all cars.
-             */
-            if (categoryId == null &&
-                maxPrice == null &&
-                minimumMileage == null) {
-
-                recommendedCars =
-                        new ArrayList<>(allCars);
-            }
-
-            /*
-             * Send recommendation data to JSP.
-             */
-            request.setAttribute(
-                    "recommendedCars",
-                    recommendedCars
-            );
-
-            request.setAttribute(
-                    "selectedCategory",
-                    categoryParam
-            );
-
-            request.setAttribute(
-                    "selectedMaxPrice",
-                    maxPriceParam
-            );
-
-            request.setAttribute(
-                    "selectedMileage",
-                    mileageParam
-            );
-
-            request.getRequestDispatcher(
-                    "/comparison/carRecommendation.jsp"
-            ).forward(request, response);
+            response.getWriter().write(
+                JsonUtil.carList(recommended));
 
         } catch (Exception e) {
-
-            e.printStackTrace();
-
-            request.setAttribute(
-                    "recommendedCars",
-                    new ArrayList<Car>()
-            );
-
-            request.setAttribute(
-                    "errorMessage",
-                    "Unable to load car recommendations: "
-                            + e.getMessage()
-            );
-
-            request.getRequestDispatcher(
-                    "/comparison/carRecommendation.jsp"
-            ).forward(request, response);
+            response.setStatus(400);
+            response.getWriter().write(
+                JsonUtil.message(false,
+                    "Unable to get recommendations."));
         }
     }
 }
