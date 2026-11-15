@@ -62,7 +62,7 @@ public class AdminLoginServlet extends HttpServlet {
             session.setMaxInactiveInterval(30 * 60);
 
             response.sendRedirect(
-                request.getContextPath() + "/admin/dashboard.jsp"
+                request.getContextPath() + "/admin/dashboard"
             );
 
         } else {

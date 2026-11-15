@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="com.Carzo.admin.model.DashboardStats" %>
 
 <%
     if (session.getAttribute("adminId") == null) {
@@ -11,6 +13,9 @@
 
     String adminName = (String) session.getAttribute("adminName");
     String adminEmail = (String) session.getAttribute("adminEmail");
+    DashboardStats stats = (DashboardStats) request.getAttribute("stats");
+
+    	String dashboardError = (String) request.getAttribute("dashboardError");
 %>
 
 <!DOCTYPE html>
@@ -42,7 +47,7 @@
 
         <h4>MAIN MENU</h4>
 
-        <a href="dashboard.jsp" class="active">
+        <a href="${pageContext.request.contextPath}/admin/dashboard" class="active">
             ▣ Dashboard
         </a>
 
@@ -118,31 +123,64 @@
 
         <section class="stats-grid">
 
-            <div class="stat-card">
-                <h4>Total Users</h4>
-                <h2>—</h2>
-                <p>Awaiting database integration</p>
-            </div>
+    <% if (stats != null) { %>
 
-            <div class="stat-card">
-                <h4>Total Cars</h4>
-                <h2>—</h2>
-                <p>Awaiting database integration</p>
-            </div>
+        <div class="stat-card">
+            <h4>Total Admins</h4>
+            <h2><%= stats.getTotalAdmins() %></h2>
+            <p>Administrator accounts</p>
+        </div>
 
-            <div class="stat-card">
-                <h4>Total Categories</h4>
-                <h2>—</h2>
-                <p>Awaiting database integration</p>
-            </div>
+        <div class="stat-card">
+            <h4>Total Users</h4>
+            <h2><%= stats.getTotalUsers() %></h2>
+            <p>Registered users</p>
+        </div>
 
-            <div class="stat-card">
-                <h4>Total Comparisons</h4>
-                <h2>—</h2>
-                <p>Awaiting database integration</p>
-            </div>
+        <div class="stat-card">
+            <h4>Total Cars</h4>
+            <h2><%= stats.getTotalCars() %></h2>
+            <p>Available cars</p>
+        </div>
 
-        </section>
+        <div class="stat-card">
+            <h4>Total Categories</h4>
+            <h2><%= stats.getTotalCategories() %></h2>
+            <p>Car categories</p>
+        </div>
+
+        <div class="stat-card">
+            <h4>Total Brands</h4>
+            <h2><%= stats.getTotalBrands() %></h2>
+            <p>Available brands</p>
+        </div>
+
+        <div class="stat-card">
+            <h4>Total Purchases</h4>
+            <h2><%= stats.getTotalPurchases() %></h2>
+            <p>Purchase records</p>
+        </div>
+
+        <div class="stat-card">
+            <h4>Wishlist Items</h4>
+            <h2><%= stats.getTotalWishlistItems() %></h2>
+            <p>Saved car entries</p>
+        </div>
+
+    <% } else { %>
+
+        <div class="content-box">
+            <h3>Dashboard Statistics Unavailable</h3>
+            <p>
+                <%= dashboardError != null
+                    ? dashboardError
+                    : "Open the dashboard through the Dashboard Servlet." %>
+            </p>
+        </div>
+
+    <% } %>
+
+</section>
 
 
         <!-- BOTTOM CONTENT -->
