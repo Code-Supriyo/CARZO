@@ -262,7 +262,7 @@
             ♙ User Management
         </a>
 
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin/cars">
             ▣ Car Management
         </a>
 
