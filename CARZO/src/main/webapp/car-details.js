@@ -374,7 +374,7 @@ function displayColours(colours) {
 }
 
 function setupNavigation() {
-    const links = document.querySelectorAll(".nav-link");
+    const links = document.querySelectorAll(".car-tabs");
 
     links.forEach(link => {
         link.addEventListener("click", () => {

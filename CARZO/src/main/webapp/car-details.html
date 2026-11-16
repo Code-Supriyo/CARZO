@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Car Details | CARZO</title>
-<link rel="stylesheet" href="car-details.css">
+<link rel="stylesheet" href="carzo.css">
 </head>
 <body>
-	<header class="header">
+	<header class="header" class="car-details">
 		<div class="header-left">
 			<div class="header-tooltip">
 				<button class="hamburger-button" id="sidebarToggle">
@@ -55,7 +55,7 @@
 
 		<header class="details-header">
 			<div class="title-row">
-				<h1 id="carName">Loading car...</h1>
+				<h2 id="carName">Loading car...</h2>
 
 				<button class="wishlist-btn" id="wishlistBtn"
 					aria-label="Add to wishlist">
@@ -65,12 +65,15 @@
 				</button>
 			</div>
 		</header>
-
-		<nav class="details-nav">
-			<a href="#overview" class="nav-link active">Overview</a> <a
-				href="#specifications" class="nav-link">Specifications</a> <a
-				href="#similar-cars" class="nav-link">Similar Cars</a>
+	
+		<div class="car-tabs-wrapper">
+		<nav class="car-tabs">
+			<a href="#overview" class="car-tab active" class="car-tab">Overview</a> 
+			<a href="#specifications" class="car-tab">Specifications</a> 
+			<a href="#similar-cars" class="car-tab">Similar Cars</a>
+			<span class="tab-indicator"></span>
 		</nav>
+		</div>
 
 		<section class="overview-section" id="overview">
 
