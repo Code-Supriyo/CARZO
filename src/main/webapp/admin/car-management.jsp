@@ -285,11 +285,11 @@
             ▤ Category Management
         </a>
 
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin/compare-cars">
             ⇄ Comparison Management
         </a>
 
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin/maintenance">
             ⚙ Maintenance Management
         </a>
 
