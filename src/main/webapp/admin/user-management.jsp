@@ -266,7 +266,7 @@
             ▣ Car Management
         </a>
 
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin/categories">
             ▤ Category Management
         </a>
 
