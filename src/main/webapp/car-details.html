@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Details | CARZO</title>
+<link rel="stylesheet" href="carzo.css">
+</head>
+<body>
+	<header class="header" class="car-details">
+		<div class="header-left">
+			<div class="header-tooltip">
+				<button class="hamburger-button" id="sidebarToggle">
+					<img src="sidebar-expand.svg" alt="Open sidebar">
+				</button>
+				<span class="tooltip-text">Open sidebar</span>
+			</div>
+			<strong class="logo">Carzo</strong>
+		</div>
+
+		<nav class="header-nav">
+			<div class="header-tooltip">
+				<a href="wishlist.html"> <img src="heart-svgrepo-com.svg" alt="Wishlist">
+				</a> <span class="tooltip-text">Wishlist</span>
+			</div>
+
+			<div class="header-tooltip">
+				<a href="Profile.html" class="user-link"> <img
+					src="user-circle-svgrepo-com.svg" alt="User">
+				</a> <span class="tooltip-text">My Profile</span>
+			</div>
+		</nav>
+	</header>
+
+
+	<aside class="sidebar" id="sidebar">
+		<div class="sidebar-header">
+			<strong class="sidebar-logo">CARZO</strong>
+
+			<button class="sidebar-close" id="sidebarClose">
+				<img src="sidebar-collapse.svg" alt="Close sidebar">
+			</button>
+		</div>
+
+		<nav class="sidebar-nav">
+			<a href="home.html">HOME</a> <a href="categories.html">CAR
+				CATEGORIES</a> <a href="#">CAR COMPARISON</a> <a href="#">CAR
+				MAINTENANCE</a>
+		</nav>
+	</aside>
+
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+	<main class="details-container">
+
+		<header class="details-header">
+			<div class="title-row">
+				<h2 id="carName">Loading car...</h2>
+
+				<button class="wishlist-btn" id="wishlistBtn"
+					aria-label="Add to wishlist">
+					<img src="heart-svgrepo-com.svg" alt="Wishlist"
+						class="heart-outline"> <img src="heart-fill-svgrepo-com.svg"
+						alt="Wishlisted" class="heart-filled">
+				</button>
+			</div>
+		</header>
+	
+		<div class="car-tabs-wrapper">
+		<nav class="car-tabs">
+			<a href="#overview" class="car-tab active" class="car-tab">Overview</a> 
+			<a href="#specifications" class="car-tab">Specifications</a> 
+			<a href="#similar-cars" class="car-tab">Similar Cars</a>
+			<span class="tab-indicator"></span>
+		</nav>
+		</div>
+
+		<section class="overview-section" id="overview">
+
+			<div class="car-gallery">
+				<div class="main-image-container">
+					<img id="carImage" src="" alt="Car image">
+				</div>
+
+				<div class="colour-section">
+					<h3>Available Colours</h3>
+					<div class="colour-swatches" id="colourSwatches">
+						<span class="loading-text">Loading colours...</span>
+					</div>
+					<p id="selectedColour"></p>
+				</div>
+			</div>
+
+			<div class="car-info">
+				<h2>
+					<span id="priceCarName">Car</span> Price
+				</h2>
+				<p class="price" id="carPrice">Loading price...</p>
+				<p class="on-road-price">(On-road price)</p>
+
+				<div class="description-card">
+					<h3>About this car</h3>
+					<p id="overviewDescription">Loading description...</p>
+				</div>
+
+				<button class="compare-btn" id="buyNowBtn" type="button">
+					Buy Now
+				</button>
+			</div>
+
+		</section>
+
+		<section class="content-section" id="specifications">
+			<h2>Specifications</h2>
+
+			<div class="specifications-grid">
+				<div class="spec-item">
+					<span>Body Type</span> <strong id="categoryName">—</strong>
+				</div>
+
+				<div class="spec-item">
+					<span>Fuel Type</span> <strong id="fuelType">—</strong>
+				</div>
+
+				<div class="spec-item">
+					<span>Transmission</span> <strong id="transmission">—</strong>
+				</div>
+
+				<div class="spec-item">
+					<span>Mileage</span> <strong id="mileage">—</strong>
+				</div>
+
+				<div class="spec-item">
+					<span>Engine Capacity</span> <strong id="engineCapacity">—</strong>
+				</div>
+
+				<div class="spec-item">
+					<span>Seating Capacity</span> <strong id="seatingCapacity">—</strong>
+				</div>
+
+				<div class="spec-item">
+					<span>Airbags</span> <strong id="airbags">—</strong>
+				</div>
+			</div>
+		</section>
+
+		<section class="content-section" id="similar-cars">
+			<h2>Similar Cars</h2>
+			<p class="section-placeholder">Loading similar cars...</p>
+		</section>
+
+	</main>
+
+	<script src="car-details.js"></script>
+	<script src="wishlist-common.js"></script>
+</body>
+</html>

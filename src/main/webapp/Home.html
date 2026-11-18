@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARZO - Home</title>
     <link rel="stylesheet" href="css/carzo.css?v=2">
-...
+
 <script src="Home.js?v=2"></script>
 </head>
 
@@ -25,6 +25,10 @@
             <div class="welcome-user">
                 <span class="user-avatar">♙</span>
                 <span>Welcome, <strong id="username">User</strong></span>
+                <a href="Profile" class="user-service-item">
+            <div class="service-icon">♙</div>
+            <span>My Profile</span>
+        </a>
             </div>
 
             <form action="Logout" method="post" class="logout-form">
@@ -33,28 +37,7 @@
         </div>
     </header>
 
-    <!-- USER SERVICES ICON ROW -->
-    <section class="user-service-section">
-        <a href="Profile" class="user-service-item">
-            <div class="service-icon">♙</div>
-            <span>My Profile</span>
-        </a>
-
-        <a href="ChangePassword.html" class="user-service-item">
-            <div class="service-icon">♧</div>
-            <span>Change Password</span>
-        </a>
-
-        <a href="Wishlist.html" class="user-service-item">
-            <div class="service-icon">♡</div>
-            <span>My Wishlist</span>
-        </a>
-
-        <a href="PurchaseHistory.html" class="user-service-item">
-            <div class="service-icon">▤</div>
-            <span>Purchase History</span>
-        </a>
-    </section>
+    
 
     <!-- HERO BANNER -->
     <section class="home-hero">
@@ -82,7 +65,7 @@
             </div>
 
             <div class="explore-service-grid">
-                <a href="CarCategories.html" class="explore-card">
+                <a href="categories.html" class="explore-card">
                     <div class="explore-icon">🚘</div>
                     <div>
                         <h3>Car Categories</h3>
@@ -91,7 +74,7 @@
                     <span class="service-arrow">→</span>
                 </a>
 
-                <a href="CarComparison.html" class="explore-card">
+                <a href="carSelection.html" class="explore-card">
                     <div class="explore-icon">⚖</div>
                     <div>
                         <h3>Compare Cars</h3>
@@ -100,7 +83,7 @@
                     <span class="service-arrow">→</span>
                 </a>
 
-                <a href="CarMaintenance.html" class="explore-card">
+                <a href="addMaintenance.html" class="explore-card">
                     <div class="explore-icon">🔧</div>
                     <div>
                         <h3>Car Maintenance</h3>

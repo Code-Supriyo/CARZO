@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Categories</title>
+<link rel="stylesheet" href="carzo.css">
+</head>
+<body>
+	<header class="header">
+		<div class="header-left">
+			<div class="header-tooltip">
+				<button class="hamburger-button" id="sidebarToggle">
+					<img src="sidebar-expand.svg" alt="Open sidebar">
+				</button>
+				<span class="tooltip-text">Open sidebar</span>
+			</div>
+			<strong class="logo">Carzo</strong>
+		</div>
+
+		<nav class="header-nav">
+
+			<div class="header-tooltip">
+				<a href="wishlist.html"> <img src="heart-svgrepo-com.svg"
+					alt="Wishlist">
+				</a> <span class="tooltip-text">Wishlist</span>
+			</div>
+
+			<div class="header-tooltip">
+				<a href="Profile.html" class="user-link"> <img
+					src="user-circle-svgrepo-com.svg" alt="User">
+				</a> <span class="tooltip-text">My Profile</span>
+			</div>
+		</nav>
+	</header>
+
+	<aside class="sidebar" id="sidebar">
+		<div class="sidebar-header">
+			<strong class="sidebar-logo">CARZO</strong>
+
+			<button class="sidebar-close" id="sidebarClose">
+				<img src="sidebar-collapse.svg" alt="Close sidebar">
+			</button>
+		</div>
+
+		<nav class="sidebar-nav">
+			<a href="home.html">HOME</a> <a href="#">CAR CATEGORIES</a> <a
+				href="argha_frontend/carSelection.html">CAR COMPARISON</a> <a href="#">CAR MAINTENANCE</a>
+		</nav>
+	</aside>
+
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+	<main class="main-content">
+		<section class="car-categories">
+			<h1>Car Categories</h1>
+			<p>Find your dream car in a few clicks.</p>
+
+			<div class="search-filter-row">
+
+				<button type="button" class="filter-button all-filters-button"
+					id="filterButton" data-filter="all" aria-label="All filters">
+					<img src="filter-alt-2-svgrepo-com.svg" alt="">
+				</button>
+
+				<div class="search-bar">
+					<input type="text" id="carSearchInput"
+						placeholder="Enter car name...." autocomplete="off"
+						role="combobox" aria-autocomplete="list"
+						aria-controls="searchSuggestions" aria-expanded="false">
+
+					<div class="search-suggestions" id="searchSuggestions"
+						role="listbox" hidden></div>
+
+					<img src="search-svgrepo-com.svg" alt="Search" class="search-icon">
+				</div>
+
+			</div>
+
+			<div class="filters">
+
+				<button type="button" class="filter-button" data-filter="budget">
+					<img src="wallet2-svgrepo-com.svg" alt="Budget"> <span>Budget</span>
+				</button>
+
+				<button type="button" class="filter-button" data-filter="bodyType">
+					<img src="car-svgrepo-com.svg" alt="Body Type"> <span>Body
+						Type</span>
+				</button>
+
+				<button type="button" class="filter-button" data-filter="fuelType">
+					<img src="gas-station-fuel-svgrepo-com.svg" alt="Fuel Type">
+					<span>Fuel Type</span>
+				</button>
+
+			</div>
+		</section>
+
+		<section class="filtered-results" id="filteredResults" hidden>
+			<div class="results-heading">
+				<h2 id="resultCount">0 Cars</h2>
+				<label class="sort-control" for="resultSort">Sort by <select
+					id="resultSort">
+						<option value="name" selected>Name</option>
+						<option value="price-low">Price: Low to High</option>
+						<option value="price-high">Price: High to Low</option>
+				</select>
+				</label>
+			</div>
+			<div class="selected-filters" id="selectedFilters"></div>
+			<div class="results-grid" id="resultsGrid"></div>
+		</section>
+
+		<br>
+		<section class="popular-cars">
+
+			<h2>Popular Cars</h2>
+
+			<div class="car-tabs-wrapper">
+
+				<nav class="car-tabs" id="carTabs">
+
+					<button class="car-tab active" data-category="popular">
+						Popular</button>
+
+					<button class="car-tab" data-category="new-launches">New
+						Launches</button>
+
+					<button class="car-tab" data-category="upcoming">Upcoming
+					</button>
+
+					<span class="tab-indicator"></span>
+				</nav>
+			</div>
+
+
+			<div class="horizontal-slider car-slider-wrapper">
+
+				<button type="button" class="slider-arrow left"
+					aria-label="Scroll cars left">&#10094;</button>
+
+				<div class="car-scroll" id="carScroll">
+					<div class="car-grid" id="carGrid">
+						<!-- Cars will be inserted by JavaScript -->
+					</div>
+				</div>
+
+				<button type="button" class="slider-arrow right"
+					aria-label="Scroll cars right">&#10095;</button>
+
+			</div>
+
+		</section>
+
+		<br>
+
+		<section class="top-brands">
+
+			<h2>Browse Top Brands</h2>
+
+			<div class="horizontal-slider brand-slider-wrapper">
+
+				<button type="button" class="slider-arrow left"
+					aria-label="Scroll brands left">&#10094;</button>
+
+				<div class="brand-scroll" id="brandScroll">
+					<div class="brand-grid" id="brandGrid"></div>
+				</div>
+
+				<button type="button" class="slider-arrow right"
+					aria-label="Scroll brands right">&#10095;</button>
+
+			</div>
+
+		</section>
+
+	</main>
+	<div class="filter-modal" id="filterModal">
+
+		<div class="filter-box">
+
+			<div class="filter-header">
+
+				<h2>Filters</h2>
+
+				<button type="button" class="filter-close" id="filterClose">
+					<img src="close-md-svgrepo-com.svg" alt="Close">
+				</button>
+
+			</div>
+
+			<form id="filterForm">
+
+				<div class="filter-content">
+					<div class="filter-group" data-filter-group="budget">
+						<button type="button" class="filter-group-header">
+
+							<span>Budget</span> <img src="down-arrow-5-svgrepo-com.svg"
+								alt="Expand" class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content budget-content">
+
+							<div class="budget-inputs">
+
+								<div>
+									<label for="minPrice">Min Price</label> <input type="number"
+										id="minPrice" name="minPrice" placeholder="Min (₹ Lakh)"
+										min="2" max="100" step="0.5">
+								</div>
+
+								<div>
+									<label for="maxPrice">Max Price</label> <input type="number"
+										id="maxPrice" name="maxPrice" placeholder="Max (₹ Lakh)"
+										min="2" max="100" step="0.5">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="filter-group" data-filter-group="bodyType">
+
+						<button type="button" class="filter-group-header">
+							<span>Body Type</span> <img src="down-arrow-5-svgrepo-com.svg"
+								alt="Expand" class="filter-arrow">
+						</button>
+
+						<div class="filter-group-content">
+
+							<div class="body-type-options">
+
+								<label class="body-type-option"> <input type="checkbox"
+									name="bodyType" value="SUV"> <span
+									class="body-type-card"> <img src="body-svgs/suv_clr.svg"
+										alt="SUV"> <span>SUV</span>
+								</span>
+								</label> <label class="body-type-option"> <input type="checkbox"
+									name="bodyType" value="Sedan"> <span
+									class="body-type-card"> <img
+										src="body-svgs/sedan_clr.svg" alt="Sedan"> <span>Sedan</span>
+								</span>
+								</label> <label class="body-type-option"> <input type="checkbox"
+									name="bodyType" value="Hatchback"> <span
+									class="body-type-card"> <img
+										src="body-svgs/hatchback_clr.svg" alt="Hatchback"> <span>Hatchback</span>
+								</span>
+								</label> <label class="body-type-option"> <input type="checkbox"
+									name="bodyType" value="MUV"> <span
+									class="body-type-card"> <img src="body-svgs/muv_clr.svg"
+										alt="MUV"> <span>MUV</span>
+								</span>
+								</label> <label class="body-type-option"> <input type="checkbox"
+									name="bodyType" value="Coupe"> <span
+									class="body-type-card"> <img
+										src="body-svgs/coupe_clr.svg" alt="Coupe"> <span>Coupe</span>
+								</span>
+								</label> <label class="body-type-option"> <input type="checkbox"
+									name="bodyType" value="Convertible"> <span
+									class="body-type-card"> <img
+										src="body-svgs/convertible_clr.svg" alt="Convertible"> <span>Convertible</span>
+								</span>
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="filter-group" data-filter-group="transmission">
+
+						<button type="button" class="filter-group-header">
+
+							<span>Transmission Type</span> <img
+								src="down-arrow-5-svgrepo-com.svg" alt="Expand"
+								class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content">
+
+							<div class="filter-options">
+
+								<label> <input type="checkbox" name="transmission"
+									value="Manual"> Manual
+								</label> <label> <input type="checkbox" name="transmission"
+									value="Automatic"> Automatic
+								</label> <label> <input type="checkbox" name="transmission"
+									value="Clutchless Manual"> Clutchless Manual
+								</label>
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="filter-group" data-filter-group="fuelType">
+
+						<button type="button" class="filter-group-header">
+
+							<span>Fuel Type</span> <img src="down-arrow-5-svgrepo-com.svg"
+								alt="Expand" class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content">
+
+							<div class="filter-options">
+
+								<label> <input type="checkbox" name="fuelType"
+									value="Petrol"> Petrol
+								</label> <label> <input type="checkbox" name="fuelType"
+									value="Diesel"> Diesel
+								</label> <label> <input type="checkbox" name="fuelType"
+									value="Electric"> Electric
+								</label> <label> <input type="checkbox" name="fuelType"
+									value="CNG"> CNG
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="filter-group" data-filter-group="make">
+
+						<button type="button" class="filter-group-header">
+
+							<span>Brands</span> <img src="down-arrow-5-svgrepo-com.svg"
+								alt="Expand" class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content make-content">
+
+							<div class="filter-options make-options">
+
+								<label> <input type="checkbox" name="make"
+									value="Maruti Suzuki"> Maruti Suzuki
+								</label> <label> <input type="checkbox" name="make" value="Tata">
+									Tata
+								</label> <label> <input type="checkbox" name="make"
+									value="Mahindra"> Mahindra
+								</label> <label> <input type="checkbox" name="make" value="Kia">
+									Kia
+								</label> <label> <input type="checkbox" name="make"
+									value="Hyundai"> Hyundai
+								</label> <label> <input type="checkbox" name="make"
+									value="Toyota"> Toyota
+								</label> <label> <input type="checkbox" name="make"
+									value="Skoda"> Skoda
+								</label> <label> <input type="checkbox" name="make"
+									value="Honda"> Honda
+								</label> <label> <input type="checkbox" name="make" value="BMW">
+									BMW
+								</label> <label> <input type="checkbox" name="make" value="Audi">
+									Audi
+								</label> <label> <input type="checkbox" name="make"
+									value="Mercedes-Benz"> Mercedes-Benz
+								</label> <label> <input type="checkbox" name="make"
+									value="Nissan"> Nissan
+								</label> <label> <input type="checkbox" name="make"
+									value="Renault"> Renault
+								</label> <label> <input type="checkbox" name="make"
+									value="Volkswagen"> Volkswagen
+								</label> <label> <input type="checkbox" name="make"
+									value="MG Motor"> MG Motor
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="filter-group" data-filter-group="mileage">
+
+						<button type="button" class="filter-group-header">
+
+							<span>Mileage</span> <img src="down-arrow-5-svgrepo-com.svg"
+								alt="Expand" class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content">
+
+							<div class="filter-options">
+
+								<label> <input type="checkbox" name="mileage"
+									value="upto-10"> Upto 10 kmpl
+								</label> <label> <input type="checkbox" name="mileage"
+									value="10-15"> 10 kmpl - 15 kmpl
+								</label> <label> <input type="checkbox" name="mileage"
+									value="15-20"> 15 kmpl - 20 kmpl
+								</label> <label> <input type="checkbox" name="mileage"
+									value="above-20"> Above 20 kmpl
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="filter-group" data-filter-group="seating">
+
+						<button type="button" class="filter-group-header">
+
+							<span>Seating Capacity</span> <img
+								src="down-arrow-5-svgrepo-com.svg" alt="Expand"
+								class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content">
+
+							<div class="filter-options">
+
+								<label> <input type="checkbox" name="seating" value="2">
+									2 Seater
+								</label> <label> <input type="checkbox" name="seating" value="4">
+									4 Seater
+								</label> <label> <input type="checkbox" name="seating" value="5">
+									5 Seater
+								</label> <label> <input type="checkbox" name="seating" value="6">
+									6 Seater
+								</label> <label> <input type="checkbox" name="seating" value="7">
+									7 Seater
+								</label> <label> <input type="checkbox" name="seating" value="8">
+									8+ Seater
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="filter-group" data-filter-group="airbags">
+
+						<button type="button" class="filter-group-header">
+
+							<span>Airbags</span> <img src="down-arrow-5-svgrepo-com.svg"
+								alt="Expand" class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content">
+
+							<div class="filter-options">
+
+								<label> <input type="checkbox" name="airbags" value="2">
+									2 Airbags
+								</label> <label> <input type="checkbox" name="airbags" value="4">
+									4 Airbags
+								</label> <label> <input type="checkbox" name="airbags" value="6">
+									6 Airbags
+								</label> <label> <input type="checkbox" name="airbags" value="7">
+									7+ Airbags
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="filter-group" data-filter-group="features">
+
+						<button type="button" class="filter-group-header">
+
+							<span>Additional Features</span> <img
+								src="down-arrow-5-svgrepo-com.svg" alt="Expand"
+								class="filter-arrow">
+
+						</button>
+
+						<div class="filter-group-content">
+
+							<div class="filter-options feature-options">
+
+								<label> <input type="checkbox" name="features"
+									value="Sunroof"> Sunroof
+								</label> <label> <input type="checkbox" name="features"
+									value="Reverse Camera"> Reverse Camera
+								</label> <label> <input type="checkbox" name="features"
+									value="Touchscreen Display"> Touchscreen Display
+								</label> <label> <input type="checkbox" name="features"
+									value="4 Wheel Drive"> 4 Wheel Drive
+								</label> <label> <input type="checkbox" name="features"
+									value="Wireless Charging"> Wireless Charging
+								</label> <label> <input type="checkbox" name="features"
+									value="Central Locking"> Central Locking
+								</label> <label> <input type="checkbox" name="features"
+									value="Cruise Control"> Cruise Control
+								</label> <label> <input type="checkbox" name="features"
+									value="Hill Hold Control"> Hill Hold Control
+								</label> <label> <input type="checkbox" name="features"
+									value="Ventilated Seats"> Ventilated Seats
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="filter-group" data-filter-group="engine">
+
+						<button type="button" class="filter-group-header">
+							<span>Engine Capacity</span> <img
+								src="down-arrow-5-svgrepo-com.svg" alt="Expand"
+								class="filter-arrow">
+						</button>
+
+						<div class="filter-group-content">
+							<div class="filter-options">
+
+								<label> <input type="checkbox" name="engine"
+									value="below-0.8"> Upto 800cc
+								</label> <label> <input type="checkbox" name="engine"
+									value="0.8-1.2"> 800cc - 1200cc
+								</label> <label> <input type="checkbox" name="engine"
+									value="1.2-1.5"> 1200cc - 1500cc
+								</label> <label> <input type="checkbox" name="engine"
+									value="1.5-2"> 1500cc - 2000cc
+								</label> <label> <input type="checkbox" name="engine"
+									value="2-3"> 2000cc - 3000cc
+								</label> <label> <input type="checkbox" name="engine"
+									value="above-3"> Above 3000cc
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="filter-group" data-filter-group="colour">
+
+						<button type="button" class="filter-group-header">
+							<span>Colours</span> <img src="down-arrow-5-svgrepo-com.svg"
+								alt="Expand" class="filter-arrow">
+						</button>
+
+						<div class="filter-group-content">
+							<div class="colour-options">
+
+								<label class="colour-option"> <input type="checkbox"
+									name="colour" value="White"> <span
+									class="colour-swatch white"></span> <span>White</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Black"> <span
+									class="colour-swatch black"></span> <span>Black</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Pink"> <span
+									class="colour-swatch pink"></span> <span>Pink</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Grey"> <span
+									class="colour-swatch grey"></span> <span>Grey</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Red"> <span
+									class="colour-swatch red"></span> <span>Red</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Blue"> <span
+									class="colour-swatch blue"></span> <span>Blue</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Green"> <span
+									class="colour-swatch green"></span> <span>Green</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Brown"> <span
+									class="colour-swatch brown"></span> <span>Brown</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Orange"> <span
+									class="colour-swatch orange"></span> <span>Orange</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Beige"> <span
+									class="colour-swatch beige"></span> <span>Beige</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Gold"> <span
+									class="colour-swatch gold"></span> <span>Gold</span>
+								</label> <label class="colour-option"> <input type="checkbox"
+									name="colour" value="Purple"> <span
+									class="colour-swatch purple"></span> <span>Purple</span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="filter-footer">
+					<button type="button" class="clear-filters" id="clearFilters">
+						Clear All</button>
+
+					<button type="submit" class="apply-filters">Apply Changes
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="categories.js"></script>
+	<script src="filters.js"></script>
+	<script src="wishlist-common.js"></script>
+</body>
+</html>

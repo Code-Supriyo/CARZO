@@ -1,4 +1,4 @@
-package com.Carzo;
+package com.carzo;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

@@ -330,6 +330,11 @@ body {
     transition: 0.35s;
 }
 
+.service-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .service-card:hover {
     transform: translateY(-8px);
     border-color: #c69b45;

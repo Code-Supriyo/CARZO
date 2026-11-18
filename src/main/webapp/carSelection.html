@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carzo | Compare Cars</title>
+    <link rel="stylesheet" href="css/comparison.css">
+    <script src="js/carSelection.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo"><a href="index.html">CARZO</a></div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="carSelection.html" class="active">COMPARE</a>
+        <a href="carRecommendation.html">RECOMMENDATION</a>
+    </nav>
+</header>
+
+<section class="page-heading">
+    <h1>Compare Your Favourite Cars</h1>
+    <p>Select 2 to 4 cars and compare their prices, performance and features.</p>
+</section>
+
+<main class="comparison-container">
+
+    <section class="search-section">
+        <form id="searchForm">
+            <input type="text" id="carSearch"
+                   placeholder="Search by car name or brand">
+
+            <select id="category">
+                <option value="">All Categories</option>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="MUV">MUV</option>
+                <option value="Coupe">Coupe</option>
+                <option value="Convertible">Convertible</option>
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+    <section class="compare-toolbar">
+        <div>
+            <h3>Selected Cars: <span id="selectedCount">0</span> / 4</h3>
+            <p>Select at least 2 cars to compare.</p>
+        </div>
+
+        <div class="selection-actions">
+            <button type="button" id="selectAllButton">
+                Select First 4
+            </button>
+
+            <button type="button" id="clearSelectionButton"
+                    class="clear-button">
+                Clear Selection
+            </button>
+
+            <form id="compareForm">
+                <button type="submit" id="compareButton" disabled>
+                    Compare Selected Cars
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <div id="errorMessage" class="error-message" hidden></div>
+
+    <section>
+        <h2>Available Cars</h2>
+        <div id="carGrid" class="car-grid">
+            <p class="no-data">Loading cars...</p>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 CARZO. All Rights Reserved.</p>
+    <p>Your Destination for Car Comparison.</p>
+</footer>
+
+</body>
+</html>

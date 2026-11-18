@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carzo - Recommendations</title>
+    <link rel="stylesheet" href="css/comparison.css">
+    <script src="js/recommendation.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo"><a href="index.html">CARZO</a></div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="carSelection.html">COMPARE</a>
+        <a href="carRecommendation.html">RECOMMENDATION</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Find Your Recommended Car</h1>
+
+    <section class="search-section">
+        <form id="recommendationForm">
+
+            <label for="category">Category</label>
+            <select id="category" name="category">
+                <option value="">All Categories</option>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="MUV">MUV</option>
+                <option value="Coupe">Coupe</option>
+                <option value="Convertible">Convertible</option>
+            </select>
+
+            <label for="maxPrice">Maximum Price (Lakh)</label>
+            <input type="number" id="maxPrice" name="maxPrice"
+                   min="0" step="0.01">
+
+            <label for="mileage">Minimum Mileage</label>
+            <input type="number" id="mileage" name="mileage"
+                   min="0" step="0.1">
+
+            <button type="submit">Find Cars</button>
+            <button type="reset" class="clear-button">Reset</button>
+
+        </form>
+    </section>
+
+    <div id="errorMessage" class="error-message" hidden></div>
+
+    <section>
+        <h2>Recommended Cars</h2>
+        <div id="recommendedCars" class="car-grid"></div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 CARZO. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
