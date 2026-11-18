@@ -1,37 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CARZO - Service Request</title>
+
+    <link rel="stylesheet" href="css/carzo.css?v=3">
+
+    <style>
+        body.carzo-service-page {
+            padding: 45px 20px 100px;
+        }
+
+        .service-container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .service-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .service-header span {
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .service-header h1 {
+            color: var(--gold-light);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 36px;
+            margin: 12px 0;
+        }
+
+        .service-header p {
+            color: #dfe4ec;
+            font-size: 14px;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border-top: 4px solid var(--gold);
+            border-radius: 14px;
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .service-card form {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .service-card label {
+            display: block;
+            color: var(--ink);
+            font-weight: 700;
+            margin: 18px 0 8px;
+        }
+
+        .service-card input,
+        .service-card select,
+        .service-card textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .service-card textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .service-submit {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background: var(--obsidian);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .service-submit:hover {
+            background: var(--gold);
+            color: var(--obsidian);
+        }
+
+        .service-back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .service-back a {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .service-back a:hover {
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .service-card {
+                padding: 22px;
+            }
+
+            .service-header h1 {
+                font-size: 29px;
+            }
+        }
+    </style>
 </head>
-<body>
-    <h2>CARZO - Service Request</h2>
-    <form action="ServiceRequestServlet" method="post">
-        <label>Car ID:</label>
-        <input type="number" name="carId" min="1" required>
-        <br><br>
-        <label>Service Type:</label>
-        <select name="serviceType" required>
-            <option value="">Select Service</option>
-            <option value="Engine Oil Change">Engine Oil Change</option>
-            <option value="Brake Inspection">Brake Inspection</option>
-            <option value="Tyre Service">Tyre Service</option>
-            <option value="Battery Check">Battery Check</option>
-            <option value="AC Service">AC Service</option>
-            <option value="General Service">General Service</option>
-        </select>
-        <br><br>
-        <label>Preferred Date:</label>
-        <input type="date" name="preferredDate" required>
-        <br><br>
-        <label>Message:</label>
-        <br>
-        <textarea name="message" rows="4" cols="40"
-                  placeholder="Describe your service requirements..."></textarea>
-        <br><br>
-        <input type="submit" value="Submit Request">
-    </form>
-    <br>
-    <a href="userMaintenance.html">Back</a>
+
+<body class="carzo-service-page">
+
+    <main class="service-container">
+
+        <header class="service-header">
+            <span>CARZO / VEHICLE CARE</span>
+
+            <h1>Request a Service</h1>
+
+            <p>
+                Schedule maintenance and keep your vehicle
+                in excellent condition.
+            </p>
+        </header>
+
+        <section class="service-card">
+
+            <form action="ServiceRequestServlet" method="post">
+
+                <label for="carId">Car ID</label>
+
+                <input
+                    type="number"
+                    id="carId"
+                    name="carId"
+                    min="1"
+                    placeholder="Enter your Car ID"
+                    required
+                >
+
+                <label for="serviceType">Service Type</label>
+
+                <select id="serviceType" name="serviceType" required>
+                    <option value="">Select Service</option>
+                    <option value="Engine Oil Change">Engine Oil Change</option>
+                    <option value="Brake Inspection">Brake Inspection</option>
+                    <option value="Tyre Service">Tyre Service</option>
+                    <option value="Battery Check">Battery Check</option>
+                    <option value="AC Service">AC Service</option>
+                    <option value="General Service">General Service</option>
+                </select>
+
+                <label for="preferredDate">Preferred Date</label>
+
+                <input
+                    type="date"
+                    id="preferredDate"
+                    name="preferredDate"
+                    required
+                >
+
+                <label for="message">Message</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Describe your service requirements..."
+                ></textarea>
+
+                <button type="submit" class="service-submit">
+                    Submit Service Request
+                </button>
+
+            </form>
+
+        </section>
+
+        <div class="service-back">
+            <a href="userMaintenance.html">
+                ← Back to My Maintenance
+            </a>
+        </div>
+
+    </main>
+
+    <script>
+        // Prevent selecting a date in the past.
+        const dateInput = document.getElementById("preferredDate");
+
+        const today = new Date();
+        const localDate =
+            today.getFullYear() + "-" +
+            String(today.getMonth() + 1).padStart(2, "0") + "-" +
+            String(today.getDate()).padStart(2, "0");
+
+        dateInput.min = localDate;
+    </script>
+
 </body>
 </html>

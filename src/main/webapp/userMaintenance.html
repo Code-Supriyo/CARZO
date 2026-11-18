@@ -1,26 +1,298 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CARZO - My Car Maintenance</title>
+
+    <link rel="stylesheet" href="css/carzo.css?v=3">
+
+    <style>
+        body.carzo-maintenance-page {
+            padding: 45px 5% 130px !important;
+        }
+
+        .carzo-maintenance-page .maintenance-dashboard {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+        }
+
+        body.carzo-maintenance-page .maintenance-header {
+            display: block !important;
+            width: 100% !important;
+            margin: 0 auto 42px !important;
+            padding: 25px 15px !important;
+            background: transparent !important;
+            border: none !important;
+            text-align: center !important;
+        }
+
+        .maintenance-eyebrow {
+            display: block;
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        body.carzo-maintenance-page .maintenance-header h1 {
+            margin: 12px 0 !important;
+            color: var(--gold-light) !important;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(32px, 5vw, 46px) !important;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        body.carzo-maintenance-page .maintenance-header p {
+            max-width: 650px !important;
+            margin: 0 auto !important;
+            color: #e0e4e9 !important;
+            text-align: center !important;
+            font-size: 15px;
+        }
+
+        .carzo-maintenance-page .maintenance-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        .carzo-maintenance-page .maintenance-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 245px;
+            padding: 30px !important;
+            background: #ffffff !important;
+            border: 1px solid #e5dfd3 !important;
+            border-top: 4px solid var(--gold) !important;
+            border-radius: 14px !important;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18) !important;
+        }
+
+        .carzo-maintenance-page .maintenance-icon {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 27px;
+        }
+
+        body.carzo-maintenance-page .maintenance-card h2 {
+            margin: 5px 0 12px !important;
+            color: #171b20 !important;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 23px !important;
+            text-align: left !important;
+            text-shadow: none !important;
+        }
+
+        body.carzo-maintenance-page .maintenance-card p {
+            max-width: none !important;
+            margin: 0 0 20px !important;
+            color: #525b66 !important;
+            font-size: 14px !important;
+            line-height: 1.8;
+            text-align: left !important;
+        }
+
+        body.carzo-maintenance-page .maintenance-card form {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 12px 0 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            text-align: left !important;
+        }
+
+        body.carzo-maintenance-page .maintenance-card label {
+            display: block;
+            margin-bottom: 9px !important;
+            color: #171b20 !important;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        body.carzo-maintenance-page .maintenance-card input[type="number"] {
+            display: block;
+            width: 100% !important;
+            min-height: 48px;
+            margin: 0 0 16px !important;
+            padding: 12px 14px !important;
+            background: #fafbfc !important;
+            border: 1px solid #d6dae0 !important;
+            border-radius: 8px !important;
+            color: #171b20 !important;
+        }
+
+        .carzo-maintenance-page .maintenance-button {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 22px !important;
+            margin: 5px 0 0 !important;
+            background: #10151d !important;
+            border: 1px solid #d6ad60 !important;
+            border-radius: 8px !important;
+            color: #f3d18a !important;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px !important;
+            font-weight: 700;
+            text-decoration: none !important;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .carzo-maintenance-page .maintenance-button:hover {
+            background: #d6ad60 !important;
+            color: #10151d !important;
+            transform: translateY(-2px);
+        }
+        .carzo-maintenance-page .maintenance-back {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        .carzo-maintenance-page .maintenance-back a {
+            color: #f3d18a !important;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .carzo-maintenance-page .maintenance-back a:hover {
+            color: #ffffff !important;
+        }
+
+
+        @media (max-width: 700px) {
+
+            body.carzo-maintenance-page {
+                padding: 25px 5% 130px !important;
+            }
+
+            .carzo-maintenance-page .maintenance-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .carzo-maintenance-page .maintenance-card {
+                min-height: auto;
+                padding: 24px !important;
+            }
+
+            body.carzo-maintenance-page .maintenance-header {
+                margin-bottom: 20px !important;
+            }
+        }
+    </style>
+
 </head>
-<body>
-    <h2>My Car Maintenance</h2>
-    <a href="serviceRequest.html">Request Service</a>
-    <br><br>
-    <h3>View Maintenance Details</h3>
-    <form action="UserMaintenanceServlet" method="get">
-        <label>Enter Car ID:</label>
-        <input type="number" name="carId"
-               placeholder="Enter your Car ID" required>
-        <input type="submit" value="View Maintenance">
-    </form>
-    <br>
-    <h3>Upcoming Maintenance</h3>
-    <p>Enter your Car ID above to view upcoming maintenance details.</p>
-    <h3>Maintenance History</h3>
-    <p>Your previous maintenance records will appear here.</p>
-    <br>
-    <a href="index.html">Back</a>
+
+<body class="carzo-maintenance-page">
+
+    <main class="maintenance-dashboard">
+        <div class="maintenance-header">
+
+            <span class="maintenance-eyebrow">
+                CARZO / VEHICLE CARE
+            </span>
+
+            <h1>My Car Maintenance</h1>
+
+            <p>
+                Manage your vehicle's maintenance and keep it
+                running at its best.
+            </p>
+
+        </div>
+
+        <section class="maintenance-grid">
+
+            <div class="maintenance-card">
+
+                <span class="maintenance-icon">⚙️</span>
+
+                <h2>Request a Service</h2>
+
+                <p>
+                    Schedule maintenance or request assistance
+                    for your vehicle.
+                </p>
+
+                <a href="serviceRequest.html"
+                   class="maintenance-button">
+                    Request Service →
+                </a>
+
+            </div>
+            <div class="maintenance-card">
+
+                <span class="maintenance-icon">🚘</span>
+
+                <h2>Maintenance Details</h2>
+
+                <p>
+                    Enter your Car ID to access your vehicle's
+                    maintenance records.
+                </p>
+
+                <form action="UserMaintenanceServlet" method="get">
+
+                    <label for="carId">
+                        Enter Your Car ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="carId"
+                        name="carId"
+                        min="1"
+                        placeholder="Enter your Car ID"
+                        required
+                    >
+
+                    <button type="submit"
+                            class="maintenance-button">
+                        View Maintenance →
+                    </button>
+
+                </form>
+
+            </div>
+            <div class="maintenance-card">
+
+                <span class="maintenance-icon">📅</span>
+
+                <h2>Upcoming Maintenance</h2>
+
+                <p>
+                    View your upcoming vehicle servicing schedule
+                    and maintenance requirements.
+                </p>
+            </div>
+            <div class="maintenance-card">
+                <span class="maintenance-icon">📋</span>
+                <h2>Maintenance History</h2>
+                <p>
+                    Keep track of your previous servicing records
+                    and completed maintenance activities.
+                </p>
+            </div>
+        </section>
+        <div class="maintenance-back">
+
+            <a href="index.html">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </main>
+
 </body>
 </html>

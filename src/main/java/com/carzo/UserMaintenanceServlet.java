@@ -283,7 +283,7 @@ public class UserMaintenanceServlet extends HttpServlet {
             out.println("</section>");
 
             out.println("<a class='back-button' href='" +
-                    contextPath + "/userMaintainance.html'>");
+                    contextPath + "/userMaintenance.html'>");
             out.println("← Back to My Maintenance");
             out.println("</a>");
 
